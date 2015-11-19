@@ -141,3 +141,5 @@ xcuserdata
 profile
 *.moved-aside
 IOS/www/
+
+platforms/*
