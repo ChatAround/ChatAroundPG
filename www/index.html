@@ -1,24 +1,4 @@
 <!DOCTYPE html>
-<!--
-    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
-
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -29,11 +9,8 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Chat Around</title>
     </head>
-    <body onload="getLocation()" >
-
+    <body onload="getLocation()">
         <h1>WELCOME TO CHAT AROUND WEB APP</h1>
-
-
 
         <p>Enter your Username and Password </p>
 
@@ -43,47 +20,9 @@
             <input type="button" value="Login" onClick="parent.location='html/main.html'">
          </form>
 
-
-        <!--GeoLocation-->
-
-         <script>
-
-
-            var x = document.getElementById("location");
-
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition,showError);
-                } else {
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
-            }
-
-            function showPosition(position) {
-
-                var lat,long;
-
-                lat = position.coords.latitude;
-                long = position.coords.longitude;
-
-                x.innerHTML = "Latitude: " + lat + "<br>Longitude: " + long;
-            }
-
-            function showError(error) {
-                switch(error.code) {
-                    case error.PERMISSION_DENIED:
-                        x.innerHTML = "User denied the request for Geolocation."
-                        break;
-                    case error.POSITION_UNAVAILABLE:
-                        x.innerHTML = "Location information is unavailable."
-                        break;
-                    case error.TIMEOUT:
-                        x.innerHTML = "The request to get user location timed out."
-                        break;
-                }
-            }
-         </script>
-        <!--GeoLocation-->
-
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
+        <script src="bower_components/stomp-websocket/lib/stomp.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>

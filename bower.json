@@ -1,0 +1,23 @@
+{
+  "name": "chataroundpg",
+  "description": "",
+  "main": "www/js/index.js",
+  "authors": [
+    "Alexis Gkiourkas <kretinosgr@gmail.com>"
+  ],
+  "homepage": "https://github.com/ChatAround/ChatAroundPG",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "sockjs-client": "~1.0.3",
+    "stomp-websocket": "~2.3.4"
+  }
+}
