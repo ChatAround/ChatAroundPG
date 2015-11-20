@@ -112,3 +112,15 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+
+p {
+    position: fixed;
+    margin-top: 14%;
+    margin-left: 45%;
+}
+
+#location {
+    position: fixed;
+    margin-top: 45%;
+    margin-left: 0%;
+}
