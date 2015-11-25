@@ -143,6 +143,7 @@ profile
 IOS/www/
 
 platforms/*
+plugins/*
 
 
 ### Node template
