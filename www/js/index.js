@@ -42,14 +42,13 @@ setInterval(function () {
 var sendLoginInfo = function (e) {
     e.preventDefault();
 
-    var id = "1";
+    //var id = "1";
     var username = $("[name='username']").val();
     //var password = $("[name='password']")).val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
 
     var data = {
-        id: id,
         username: username,
         latitude: latitude,
         longitude: longitude
@@ -60,7 +59,7 @@ var sendLoginInfo = function (e) {
             window.location.href = "html/main.html";
         })
         .fail(function (error) {
-            window.location.href = "html/main.html";
+            //window.location.href = "html/main.html";
             console.log(error);
         });
 };
