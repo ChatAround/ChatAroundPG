@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="msapplication-tap-highlight" content="no"/>
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
-    <link rel="stylesheet" type="text/css" href="css/index.css"/>
-    <link rel="stylesheet" type="text/css" href="css/login.css"/>
-    <title>Chat Around</title>
-</head>
-<body>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/login.css" />
+        <title>Chat Around</title>
+        <style>
 
-<h1>WELCOME TO CHAT AROUND WEB APP</h1>
+        </style>
+    </head>
+    <body onload="getLocation()" >
 
-<h3>Enter your Username and Password</h3>
+        <h1>WELCOME TO CHAT AROUND WEB APP</h1>
 
-<div id="container">
-    <input type="text" name="username" placeholder="Username">
-    <!--<input type="password" name="password" placeholder="Password">-->
+        <!--Login-->
 
-    <div id="lower">
-        <button type="button" name="login">Login</button>
-        <br/>
-        <a href="html/singUp.html">Create New Account</a>
-    </div>
-</div>
+        <div id="container">
+            <form type="get" action="html/main.html">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <div id="lower">
+                    <input type="checkbox" id="checkbox"><label class="check" for="checkbox">Keep me logged in</label>
+                    <input type="submit" value="Login">
+                </div><!--/ lower-->
+            </form>
+        </div><!--/ container-->
 
-<h3>Location</h3>
+        <!--Login-->
 
-<div>
-    Latitude: <span id="latitude"></span>
-    Longitude: <span id="longitude"></span>
-</div>
 
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/sockjs-client/dist/sockjs.js"></script>
-<script src="bower_components/stomp-websocket/lib/stomp.js"></script>
-<script src="js/index.js"></script>
-</body>
+        <p>Enter your Username and Password </p>
+
+        <!-- GeoLocation -->
+
+        <p id="location"></p>
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/sockjs-client/dist/sockjs.js"></script>
+        <script src="bower_components/stomp-websocket/lib/stomp.js"></script>
+        <script src="js/index.js"></script>
+    </body>
 </html>

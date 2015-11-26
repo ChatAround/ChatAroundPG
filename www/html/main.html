@@ -3,8 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Chat Around</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
-    <h1>Here you can chat with other people in your range ... OR chat with your friends</h1>
+
+    <div id="wrapper">
+        <div id="menu">
+            <p class="welcome" onload="getParams()">Welcome <b> <script src="../js/chatName.js"></script></b></p>
+            <p class="logout"><a id="exit" href="../index.html">Logout</a></p>
+            <div style="clear:both"></div>
+        </div>
+        <div id="chatbox"></div>
+        <form name="message">
+            <input type="text" id="usermsg" name="usermsg"  size="63" />
+            <input type="submit"  id="submitmsg" name="submitmsg"  value="Send" />
+        </form>
+    </div>
+
 </body>
 </html>
