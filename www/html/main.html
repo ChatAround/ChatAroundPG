@@ -7,18 +7,32 @@
 </head>
 <body>
 
-    <div id="wrapper">
-        <div id="menu">
-            <p class="welcome" onload="getParams()">Welcome <b> <script src="../js/chatName.js"></script></b></p>
-            <p class="logout"><a id="exit" href="../index.html">Logout</a></p>
-            <div style="clear:both"></div>
-        </div>
-        <div id="chatbox"></div>
-        <form name="message">
-            <input type="text" id="usermsg" name="usermsg"  size="63" />
-            <input type="submit"  id="submitmsg" name="submitmsg"  value="Send" />
-        </form>
+<div id="users"></div>
+
+<div id="wrapper">
+    <div id="menu">
+        <p class="welcome" onload="getParams()">Welcome <b>
+            <script src="../js/chatName.js"></script>
+        </b></p>
+        <p class="logout"><a id="exit" href="../index.html">Logout</a></p>
+
+        <div style="clear:both"></div>
     </div>
+    <div id="chatbox"></div>
+    <form name="message">
+        <input type="text" id="usermsg" name="usermsg" size="63"/>
+        <input type="submit" id="submitmsg" name="submitmsg" value="Send"/>
+    </form>
+</div>
+
+
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/backbone/backbone.js"></script>
+<script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
+<script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
+<script src="../js/userList.js"></script>
 
 </body>
 </html>
