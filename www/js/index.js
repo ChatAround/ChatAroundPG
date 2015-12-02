@@ -3,6 +3,16 @@ var NS = {
     currentLongitude: null
 };
 
+var userId = $.cookie('userId');
+var userName = $.cookie('userName');
+
+var showUserName = function(){
+    $("#userName").html(userName)
+};
+
+var showUserId = function (){
+    $("#userid").html(userId);
+};
 var showLocation = function () {
     $("#latitude").html(NS.currentLatitude);
     $("#longitude").html(NS.currentLongitude);
@@ -13,7 +23,8 @@ var Location = {
         var updateCurrentLocation = function (position) {
             NS.currentLatitude = position.coords.latitude;
             NS.currentLongitude = position.coords.longitude;
-
+            showUserName();
+            showUserId();
             showLocation();
         };
 
@@ -42,11 +53,12 @@ setInterval(function () {
 var sendLoginInfo = function (e) {
     e.preventDefault();
 
-    //var id = "1";
+    //var id = "1L";
     var username = $("[name='username']").val();
     //var password = $("[name='password']")).val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
+    $.cookie('userName', username);
 
     var data = {
         username: username,
@@ -54,17 +66,34 @@ var sendLoginInfo = function (e) {
         longitude: longitude
     };
 
-    $.post("http://chataround.ddns.net:8080/login", data)
+    $.post("http://chataround.ddns.net:8080/user", data)
         .done(function (response) {
+            userId = response;
+            $.cookie('userId', userId);
+            window.alert("Your ID = " + userId);
             window.location.href = "html/main.html";
         })
         .fail(function (error) {
-            //window.location.href = "html/main.html";
             console.log(error);
+        });
+
+};
+
+var sendLogoutInfo = function(e){
+    e.preventDefault();
+
+    $.ajax({
+        type: 'DELETE',
+        url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({id : userId})
+        })
+        .done( function(result) {
+            window.location.href = "../index.html";
         });
 };
 
 $("[name='login']").on("click", sendLoginInfo);
+$("[name='logout']").on("click", sendLogoutInfo);
+$("[name='id']").on("click", showUserId);
 
 // Sockets
 
