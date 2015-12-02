@@ -1,8 +1,21 @@
 body {
     font: 12px arial;
     color: #222;
-    text-align: center;
     padding: 35px;
+}
+
+#users {
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 10%;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 150%;
+    border-right: thin solid black;
+    border-left: thin solid black;
+    border-bottom: thin solid black;
+    padding-left: 3px;
 }
 
 form, p, span {
@@ -24,10 +37,15 @@ a:hover {
 }
 
 #wrapper {
+    position: fixed;
+    top: 3%;
+    left: 10%;
+    text-align: center;
     margin: 0 auto;
     padding-bottom: 25px;
     background: #ebf4fb;
-    width: 504px;
+    width: 1000px;
+    height: 504px;
     border: 1px solid #acd8f0;
 }
 
@@ -37,14 +55,15 @@ a:hover {
     margin-bottom: 25px;
     padding: 10px;
     background: #fff;
-    height: 270px;
-    width: 430px;
+    height: 380px;
+    width: 600px;
     border: 1px solid #acd8f0;
     overflow: auto;
 }
 
 #usermsg {
-    width: 395px;
+    width: 570px;
+    height: 20px;
     border: 1px solid #acd8f0;
 }
 
