@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="format-detection" content="telephone=no"/>
-    <meta name="msapplication-tap-highlight" content="no"/>
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport"
-          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
 </head>
 <body>
+
+    <div id="users"></div>
 
     <div id="wrapper">
         <div id="menu">
@@ -34,6 +30,7 @@
     <script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
     <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
     <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="../js/userList.js"></script>
     <script src="../js/index.js"></script>
 </body>
 </html>
