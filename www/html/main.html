@@ -1,20 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/verticalSettings.css">
 </head>
 <body>
 
     <div id="wrapper">
         <div id="menu">
             <p class="welcome" onload="">Welcome <span id="userName"></span></p>
-            <button type="button" name="logout">Logout</button>
+
             <div id="users"></div>
             <div style="clear:both"></div>
             <div>
                 UserID: <span id="userid"></span>
             </div>
+        </div>
+
+        <div id="wrap">
+            <ul class="navbar">
+                <li><a href="#">Settings</a>
+                    <ul>
+                        <li><input type="text" name="radius" placeholder="Radius(meter)"></li>
+                        <li><button type="button" name="logout">Logout</button></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
         <div id="chatbox"></div>

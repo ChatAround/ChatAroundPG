@@ -1,0 +1,54 @@
+#wrap {
+    width: 150px;
+    height: 50px;
+    top: 30%;
+    padding-bottom: 10px;
+    margin: 0;
+    z-index: 1;
+    position: fixed;
+}
+.navbar	{
+    height: 50px;
+    padding: 0;
+    padding-bottom: 10px;
+    margin: 0;
+    position: fixed;
+    z-index: 12;
+}
+.navbar li 	{
+    padding-bottom: 10px;
+    height: auto;
+    width: 45px;
+    object-position: top;
+    text-align: center;
+    list-style: none;
+    font: normal bold 12px/1.2em Arial, Verdana, Helvetica;
+    padding: 5px;
+    margin: 0;
+}
+.navbar a	{
+    padding: 18px 0;
+    text-decoration: none;
+    color: #000;
+    display: block;
+}
+.navbar li ul 	{
+    display: none;
+    margin: 0;
+    padding: 0;
+    margin-left:45px;
+    float:left;
+    margin-top: -45px;
+    height: 0;
+}
+.navbar li:hover ul 	{
+    display: block;
+    z-index: 12;
+    padding-left: 1px;
+}
+.navbar li ul li a 	{
+    z-index: 1001;
+}
+.navbar li ul li a:hover {
+    z-index: 1000;
+}
