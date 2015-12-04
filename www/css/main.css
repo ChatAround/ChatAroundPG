@@ -8,7 +8,7 @@ body {
     height: auto;
     position: absolute;
     top: 0;
-    right: 10%;
+    right: 6%;
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     line-height: 150%;
@@ -56,13 +56,13 @@ a:hover {
     padding: 10px;
     background: #fff;
     height: 380px;
-    width: 600px;
+    width: 550px;
     border: 1px solid #acd8f0;
     overflow: auto;
 }
 
 #usermsg {
-    width: 570px;
+    width: 525px;
     height: 20px;
     border: 1px solid #acd8f0;
 }
