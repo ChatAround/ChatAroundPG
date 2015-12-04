@@ -18,11 +18,12 @@
             </div>
         </div>
         <div id="chatbox"></div>
-        <form name="message">
+        <form name="message" onload="connect()">
             <input type="text" id="usermsg" name="usermsg"  size="63" />
-            <input type="submit"  id="submitmsg" name="submitmsg"  value="Send" />
+            <button type="button" name="sendMes">Send</button>
         </form>
     </div>
+    <div id="mpla"></div>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
@@ -32,5 +33,6 @@
     <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
     <script src="../js/userList.js"></script>
     <script src="../js/index.js"></script>
+    <script src="../js/message.js" ></script>
 </body>
 </html>
