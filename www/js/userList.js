@@ -13,9 +13,13 @@ var updateFiendList = function (users) {
     var $users = $("#users");
 
     _.each(users, function (user) {
-        var $user = $("<div>" + user.username + "</div>");
-
-        $users.append($user);
+        var currentUser = user.username;
+        if (currentUser != userName) {
+            if (currentUser != $users.username ) {
+                var $user = $("<div>" + user.username + "</div>");
+                $users.append($user);
+            }
+        }
     });
 };
 
