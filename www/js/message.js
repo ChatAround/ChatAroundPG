@@ -2,52 +2,82 @@
  * Created by KrEtiNoS on 4/12/2015.
  */
 
-var stompClient = null;
-
-function setConnected(connected) {
-    document.getElementById('connect').disabled = connected;
-    document.getElementById('disconnect').disabled = !connected;
-    document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
-    document.getElementById('response').innerHTML = '';
-}
-
-function connect() {
-    var socket = new SockJS('http://chataround.ddns.net:8080/message');
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, function(frame) {
-        setConnected(true);
-        console.log('Connected: ' + frame);
-        stompClient.subscribe('http://chataround.ddns.net:8080/topic/chat', function(message){
-            showMessage(JSON.parse(message.body));
-        });
-    });
-}
-
-function disconnect() {
-    if (stompClient != null) {
-        stompClient.disconnect();
+var userId = $.cookie('userId');
+var MessageModel = Backbone.Model.extend({
+    defaults: {
+        "username": "",
+        "content": ""
     }
-    setConnected(false);
-    console.log("Disconnected");
-    window.alert("Disconnected");
-}
+});
+var MessageCollection = Backbone.Collection.extend({
+    url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({id : userId}),
+    model: MessageModel
+});
 
-function sendMessage() {
-    //var id = $.cookie('userId');
-    //var username = $.cookie('userName');
-    var message = $("[name='usermsg']").val() ;
-    stompClient.send("http://chataround.ddns.net:8080/app/message",{}, JSON.stringify({ message : message }));
-}
+var messages = new MessageCollection();
+var i=1;
+var massage = {
+    updateMessage: function(){
+        var updateCurrentMessageList = function (messages) {
+            var $messages = $("#chatbox");
+            _.each(messages, function (message) {
 
-function showMessage(message) {
-    var response = document.getElementById('mpla');
-    var p = document.createElement('p');
-    //var mes = document.createTextNode(message);
-    p.appendChild(document.createTextNode(message));
-    response.appendChild(p);
-    //document.getElementById("chatbox").appendChild(message);
-    //response.appendChild(mes);
 
+
+
+                var $message = $("<div>"+ message.username + " : " + message.content + "</div>");// set_id + "--" +
+                //document.getElementById("id_change").id = toString(set_id);
+                $messages.append($message);
+            });
+        };
+        messages.fetch()
+            .then(updateCurrentMessageList);
+}};
+
+setInterval(function () {
+    massage.updateMessage();
+}, 500);
+
+function ClearFields() {
+
+    document.getElementById("usermsg").value = "";
 }
+//delete message = "<div style='display: none;'>" + message.username + " : " + message.content + "</div>"
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+
+
+var userName = $.cookie('userName');
+
+var sendMessage = function (e) {
+    e.preventDefault();
+
+    var id = userId;
+    var content = $("[name='usermsg']").val();
+    var radius = $("[name = 'radius']").val();
+
+    var messageInfo ={
+        id : id,
+        content: content,
+        radius: radius
+    };
+
+    $.post("http://chataround.ddns.net:8080/message", messageInfo)
+        .done(function (response) {
+            ClearFields();
+        })
+        .fail(function (error) {
+            window.alert("Message didn't send");
+            console.log(error);
+        });
+
+};
 
 $("[name='sendMes']").on("click", sendMessage);
+
+//x=i+1;
+//var $message = $("<tr>"
+//        //+"<td>"+ x +"</td>"
+//    +"<td>" + message.username + " : " +"</td>"
+//    +"<td>"+ message.content +"</td>"
+//    +"</tr>"
+//);

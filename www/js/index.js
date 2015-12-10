@@ -70,7 +70,6 @@ var sendLoginInfo = function (e) {
         .done(function (response) {
             userId = response;
             $.cookie('userId', userId);
-            window.alert("Your ID = " + userId);
             window.location.href = "html/main.html";
         })
         .fail(function (error) {
