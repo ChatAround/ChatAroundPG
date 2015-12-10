@@ -21,10 +21,6 @@ var massage = {
         var updateCurrentMessageList = function (messages) {
             var $messages = $("#chatbox");
             _.each(messages, function (message) {
-
-
-
-
                 var $message = $("<div>"+ message.username + " : " + message.content + "</div>");// set_id + "--" +
                 //document.getElementById("id_change").id = toString(set_id);
                 $messages.append($message);

@@ -11,7 +11,7 @@
     <div id="wrapper">
         <div id="menu">
             <p class="welcome" onload="">Welcome <span id="userName"></span></p>
-
+            <button type="button" name="logout">Logout</button>
             <div id="users"></div>
             <div style="clear:both"></div>
             <div>
@@ -24,19 +24,17 @@
                 <li><a href="#">Settings</a>
                     <ul>
                         <li><input type="text" name="radius" placeholder="Radius(meter)"></li>
-                        <li><button type="button" name="logout">Logout</button></li>
                     </ul>
                 </li>
             </ul>
         </div>
 
         <div id="chatbox"></div>
-        <form name="message" onload="connect()">
+        <form name="message">
             <input type="text" id="usermsg" name="usermsg"  size="63" />
             <button type="button" name="sendMes">Send</button>
         </form>
     </div>
-    <div id="mpla"></div>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
