@@ -3,6 +3,7 @@
  */
 
 var userId = $.cookie('userId');
+
 var MessageModel = Backbone.Model.extend({
     defaults: {
         "username": "",
@@ -43,13 +44,14 @@ function ClearFields() {
 
 
 var userName = $.cookie('userName');
+var radius = $("[name = 'radius']").val();
+$.cookie('radius', radius);
 
 var sendMessage = function (e) {
     e.preventDefault();
 
     var id = userId;
     var content = $("[name='usermsg']").val();
-    var radius = $("[name = 'radius']").val();
 
     var messageInfo ={
         id : id,

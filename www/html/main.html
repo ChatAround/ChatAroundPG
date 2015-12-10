@@ -13,6 +13,7 @@
             <p class="welcome" onload="">Welcome <span id="userName"></span></p>
             <button type="button" name="logout">Logout</button>
             <div id="users"></div>
+            <div id="currentUsers"></div>
             <div style="clear:both"></div>
             <div>
                 UserID: <span id="userid"></span>
@@ -20,10 +21,12 @@
         </div>
 
         <div id="wrap">
+            <input type="text" name="radius" placeholder="Radius(meter)" value= 1000.000000 >
+            <button type="button" name="ok">Ok</button>
             <ul class="navbar">
                 <li><a href="#">Settings</a>
                     <ul>
-                        <li><input type="text" name="radius" placeholder="Radius(meter)"></li>
+                        <li></li>
                     </ul>
                 </li>
             </ul>
