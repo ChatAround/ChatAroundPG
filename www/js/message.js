@@ -3,6 +3,7 @@
  */
 
 var userId = $.cookie('userId');
+var userName = $.cookie('userName');
 
 var MessageModel = Backbone.Model.extend({
     defaults: {
@@ -36,31 +37,46 @@ setInterval(function () {
 }, 500);
 
 function ClearFields() {
-
     document.getElementById("usermsg").value = "";
 }
 //delete message = "<div style='display: none;'>" + message.username + " : " + message.content + "</div>"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
 
 
-var userName = $.cookie('userName');
-var radius = $("[name = 'radius']").val();
-$.cookie('radius', radius);
-
 var sendMessage = function (e) {
     e.preventDefault();
 
+    var radius = $("[name = 'radius']").val();
+    $.cookie('radius', radius);
+    var sTime = $("[name = 'selectedTime']").val();
+    $.cookie('sTime', sTime);
+
     var id = userId;
     var content = $("[name='usermsg']").val();
+    var timeToSend;
+    var x = document.getElementById("duration").value;
+    var y = parseInt(sTime);
+
+    if (x == 0) {
+        timeToSend = y * 60;
+    }else if (x == 1){
+        timeToSend = y * 60 * 60;
+    }else if (x == 2){
+        timeToSend = y * 60 * 60 * 24;
+    }else{
+        timeToSend = 0;
+    }
 
     var messageInfo ={
         id : id,
         content: content,
-        radius: radius
+        radius: radius,
+        duration: timeToSend
     };
 
     $.post("http://chataround.ddns.net:8080/message", messageInfo)
         .done(function (response) {
+            window.alert("the time u choose " + timeToSend);
             ClearFields();
         })
         .fail(function (error) {

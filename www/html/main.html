@@ -21,15 +21,19 @@
         </div>
 
         <div id="wrap">
-            <input type="text" name="radius" placeholder="Radius(meter)" value= 1000.000000 >
+            <label>Choose distance:</label>
+            <input type="text" name="radius" value= 1000.000000 >
             <button type="button" name="ok">Ok</button>
-            <ul class="navbar">
-                <li><a href="#">Settings</a>
-                    <ul>
-                        <li></li>
-                    </ul>
-                </li>
-            </ul>
+            <br/>
+            <label>Choose the length of the message : </label>
+            <input type="text" id="selectedTime" name="selectedTime" value="1">
+            <select name="duration" id="duration">
+                <option value="0">Minutes</option>
+                <option value="1">Hours</option>
+                <option value="2">Days</option>
+                <option value="3">For Ever And Ever</option>
+            </select>
+            <button type="button" name="check" onclick="pop()">check</button>
         </div>
 
         <div id="chatbox"></div>
@@ -48,5 +52,6 @@
     <script src="../js/userList.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/message.js" ></script>
+
 </body>
 </html>
