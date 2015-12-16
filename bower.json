@@ -20,6 +20,7 @@
     "sockjs-client": "~1.0.3",
     "stomp-websocket": "~2.3.4",
     "backbone": "~1.2.3",
-    "jquery.cookie": "jquery-cookie#~1.4.1"
+    "jquery.cookie": "jquery-cookie#~1.4.1",
+    "backbone.localStorage": "Backbone.localStorage#~1.1.16"
   }
 }

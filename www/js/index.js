@@ -80,6 +80,7 @@ var sendLoginInfo = function (e) {
 
 var sendLogoutInfo = function(e){
     e.preventDefault();
+    localStorage.clear();
 
     $.ajax({
         type: 'DELETE',
