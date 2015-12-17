@@ -10,14 +10,26 @@ window.onload = function() {
         popup.style.display = "block";
     };
 
+    document.getElementById("closeBtn").onclick = function() {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("popup").style.display = "none";
+    };
+
     document.getElementById("radius").onchange = function() {
-        var newValue = document.getElementById("radius").value;
+        var newRadius = document.getElementById("radius").value;
         if (window.confirm("Save radius?")) {
-            document.getElementById("radius").defaultValue = newValue;
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("popup").style.display = "none";
+            document.getElementById("radius").defaultValue = newRadius;
         } else {
             document.getElementById("radius").value = document.getElementById("radius").defaultValue;
         }
-    }
+    };
+
+    document.getElementById("selectedTime").onchange = function() {
+        var newTime = document.getElementById("selectedTime").value;
+        if (window.confirm("Save time?")) {
+            document.getElementById("selectedTime").defaultValue = newTime;
+        } else {
+            document.getElementById("selectedTime").value = document.getElementById("selectedTime").defaultValue;
+        }
+    };
 };
