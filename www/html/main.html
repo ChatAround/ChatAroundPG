@@ -7,39 +7,49 @@
     <link rel="stylesheet" type="text/css" href="../css/verticalSettings.css">
 </head>
 <body>
+
+    <ul>
+        <li id="header"><label id="header-title">ChatAround</label></li>
+        <ul class="dropdown" style="float:right;list-style-type:none;">
+            <li><a class="user" href="#"><span id="userName"></span></a></li>
+            <div class="dropdown-content">
+                <button id="settingsBtn">Settings</button> <br>
+                <button id="logout" type="button" name="logout">Logout</button>
+            </div>
+        </ul>
+    </ul>
+
+    <div id="users-wrapper">
+        <p>Online Users</p>
+        <div id="users"></div>
+    </div>
+
     <div id="wrapper">
         <div id="menu">
-            <p class="welcome" onload="">Welcome <span id="userName"></span></p>
-            <button type="button" name="logout">Logout</button>
-            <div id="users"></div>
             <div id="currentUsers"></div>
             <div style="clear:both"></div>
-            <div>
-                UserID: <span id="userid"></span><p id="demo"></p>
-            </div>
         </div>
-
-        <div id="wrap">
-            <label>Choose distance:</label>
-            <input type="text" name="radius" value= 1000.000000 >
-            <button type="button" name="ok">Ok</button>
-            <br/>
-            <label>Choose the length of the message : </label>
-            <input type="text" id="selectedTime" name="selectedTime" value="1">
-            <select name="duration" id="duration">
-                <option value="0">Minutes</option>
-                <option value="1">Hours</option>
-                <option value="2">Days</option>
-                <option value="3">For Ever And Ever</option>
-            </select>
-            <button type="button" name="check" onclick="pop()">check</button>
-        </div>
-
         <div id="chatbox"><ul id="chatbox1"><li id="1"></li></ul></div>
         <form name="message">
             <input type="text" id="usermsg" name="usermsg"  size="63" />
             <button type="button" name="sendMes">Send</button>
         </form>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <br> <br>
+        <label>Radius: </label>
+        <input id="radius" type="text" value= 1000> <br> <br>
+        <label>Message timer: </label>
+        <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;&nbsp;
+        <select name="duration" id="duration">
+            <option value="0">Minutes</option>
+            <option value="1">Hours</option>
+            <option value="2">Days</option>
+            <option value="3">For Ever And Ever</option>
+        </select> <br> <br> <br> <br>
+        <button id="closeBtn">Close</button>
     </div>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -53,6 +63,7 @@
     <script src="../js/userList.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/message.js" ></script>
+    <script src="../js/popup.js"></script>
 
 </body>
 </html>
