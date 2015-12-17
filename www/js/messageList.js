@@ -12,46 +12,16 @@ var MessageCollection = Backbone.Collection.extend({
     model: MessageModel
 });
 
-var messages = new MessageCollection();
+
 var massage = {
     updateMessage: function(){
+        var messages = new MessageCollection();
         var updateCurrentMessageList = function (messages) {
             var $messages = $("#chatbox1");
-            var lenght=$('div#wrapper div#chatbox ul#chatbox1 li').length;
-            var isHere = 0;
             var ul = document.getElementById("chatbox1");
             var elementsLI = ul.getElementsByTagName("li");
             _.each(messages, function (message) {
-
-                //$('ul li').each(function(i){$(this).attr('id');}); var dis = $('div#wrapper div#chatbox ul#chatbox1 li').attr('id');
-
-                    //for (var x = 0; x < lenght; x++) {
-                    //    $('div#wrapper div#chatbox ul#chatbox1 li')
-                    //        .each(function(i){
-                    //            if (message.id == $(this).attr('id')) {
-                    //                isHere = 1;
-                    //                break;
-                    //            }
-                    //        });
-                    //}
-                    //mpla=1;
-                //tupwnei apoira
-                    //for (var x = 0; x < lenght; x++) {
-                    //    var dis;
-                    //    _.each($('div#wrapper div#chatbox ul#chatbox1 li'), function (li) {
-                    //        dis = $(this).id;
-                    //        if (message.id == dis) {
-                    //            isHere = 1;
-                    //        }
-                    //        if (isHere == 0) {
-                    //            //var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");
-                    //            var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content +" "+ lenght+ " " + dis +" "+ message.id +" " + isHere + "</li>");
-                    //            $messages.append($message);
-                    //        }
-                    //    });
-                    //    //var dis = $('div#wrapper div#chatbox ul#chatbox1 li').attr('id');
-                    //}
-
+                var isHere = 0;
                 for (var x = 0; x < elementsLI.length; ++x) {
                         var dis = elementsLI[x].id;
                         if (message.id == dis) {
@@ -60,20 +30,9 @@ var massage = {
                         }
                 }
                 if (isHere == 0) {
-                    //var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");
-                    var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content +" "+ lenght+ " " + dis +" "+ message.id +" " + isHere + "</li>");
+                    var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");
                     $messages.append($message);
                 }
-
-
-                    //var dis = $('div#wrapper div#chatbox ul#chatbox1 li').attr('id');
-
-                //if (isHere == 0) {
-                //    //var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");
-                //    var diss= $.cookie('dis');
-                //    var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content +" "+ lenght+ " " + diss +" "+ message.id +" " + isHere + "</li>");
-                //    $messages.append($message);
-                //}
             });
         };
         messages.fetch()
