@@ -8,16 +8,16 @@
 </head>
 <body>
 
-    <ul>
-        <li id="header"><label id="header-title">ChatAround</label></li>
-        <ul class="dropdown" style="float:right;list-style-type:none;">
-            <li><a class="user" href="#"><span id="userName"></span></a></li>
+    <dl>
+        <dt id="header"><label id="header-title">ChatAround</label></dt>
+        <dl class="dropdown" style="float:right;list-style-type:none;">
+            <dt><a class="user" href="#"><span id="userName"></span></a></dt>
             <div class="dropdown-content">
                 <button id="settingsBtn">Settings</button> <br>
                 <button id="logout" type="button" name="logout">Logout</button>
             </div>
-        </ul>
-    </ul>
+        </dl>
+    </dl>
 
     <div id="users-wrapper">
         <p>Online Users</p>
@@ -31,7 +31,7 @@
         </div>
         <div id="chatbox"><ul id="chatbox1"><li id="1"></li></ul></div>
         <form name="message">
-            <input type="text" id="usermsg" name="usermsg"  size="63" />
+            <input type="text" id="usermsg" name="usermsg" size="63" />
             <button type="button" name="sendMes">Send</button>
         </form>
     </div>
@@ -40,7 +40,7 @@
     <div id="popup">
         <br> <br>
         <label>Radius: </label>
-        <input id="radius" type="text" value= 1000> <br> <br>
+        <input id="radius" name="radius" type="text" value= 1000> <br> <br>
         <label>Message timer: </label>
         <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;&nbsp;
         <select name="duration" id="duration">
@@ -49,6 +49,7 @@
             <option value="2">Days</option>
             <option value="3">For Ever And Ever</option>
         </select> <br> <br> <br> <br>
+        <button name="save">Save</button>
         <button id="closeBtn">Close</button>
     </div>
 

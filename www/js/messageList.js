@@ -23,11 +23,11 @@ var massage = {
             _.each(messages, function (message) {
                 var isHere = 0;
                 for (var x = 0; x < elementsLI.length; ++x) {
-                        var dis = elementsLI[x].id;
-                        if (message.id == dis) {
-                            isHere = 1;
-                   break;
-                        }
+                    var dis = elementsLI[x].id;
+                    if (message.id == dis) {
+                        isHere = 1;
+                        break;
+                    }
                 }
                 if (isHere == 0) {
                     var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");

@@ -88,8 +88,8 @@ var sendLogoutInfo = function(e){
     localStorage.clear();
 
     $.ajax({
-        type: 'DELETE',
-        url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
+            type: 'DELETE',
+            url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
         })
         .done( function(result) {
             window.location.href = "../index.html";
