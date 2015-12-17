@@ -36,101 +36,101 @@
 //    massage.updateMessage();
 //}, 500);
 
-var userId = $.cookie('userId');
-var userName = $.cookie('userName');
-
-var MessageModel = Backbone.Model.extend({
-    defaults: function(){
-        return {
-            "id": "",
-            "username": "",
-            "content": ""
-        }
-    }
-});
-var x=0;
-//lambanei
-var IncomingMessageCollection = Backbone.Collection.extend({
-    url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({id : userId}),
-    model: MessageModel
-
-});
-
-    //_.each(IncomingMessageCollection, function (MessageModel) {
-    //for ( var i = 0, len = IncomingMessageCollection.localStorage.length; i < len; ++i ) {
-    //    var msgID = IncomingMessageCollection.localStorage.getItem(IncomingMessageCollection.localStorage.id( i ));
-    //    if (msgID != MessageModel.id)
-        // MessageModel.save();
-        // document.getElementById("result").innerHTML = localStorage.getItem(MessageModel.content);
-    //    }
-    //});
-
-var messages = new IncomingMessageCollection();
-var massage = {
-    updateMessage: function(){
-        var updateLocalMessageList = function (messages) {
-            _.each(messages, function (message) {
-                var isHere = 0;
-                for ( x; x < localStorage.length; x++) {
-                    //var k = "messages"+x;
-                    var db = localStorage.getItem(messages+x);
-                    //if (db.id === null){break;}
-                    if (message.id == db.id){
-                        isHere=1;
-                    }
-                }
-                if (isHere == 0) {
-                    //localStorage.setItem("messages"+x, message.id + message.username + message.content);
-                    messages.fetch();
-                    messages.add(message);
-                    message.save();
-                }
-            });
-        };
-        messages.fetch()
-            .then(updateLocalMessageList);
-    }};
-if (typeof(Storage) !== "undefined") {
-    // Retrieve
-    document.getElementById("result").innerHTML = localStorage.getItem(messages+x);
-} else {
-    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-}
-//tupwnei
-var MessageCollection = Backbone.Collection.extend({
-    model: MessageModel,
-    localStorage: new Backbone.LocalStorage("messages"+x)
-});
-
-var showMessages = new MessageCollection();
-var showMessage = {
-    updateMessage: function(){
-        var updateCurrentMessageList = function (showMessage) {
-            var $showMessages = $("#chatbox");
-            _.each(showMessage, function (messages) {
-
-                var $showMessage = $("<div>"+ localStorage.getItem(messages+x) + " : " + localStorage.getItem(messages.content) + "</div>");
-                $showMessages.append($showMessage);
-            });
-        };
-        showMessages.fetch()
-            .then(updateCurrentMessageList);
-    }};
-
-MessageCollection.localStorage = new Backbone.LocalStorage("ShowMessage");
-//IncomingMessageCollection.fetch();
-//console.log(MessageCollection.pluck('id'));//emfanisi
+//var userId = $.cookie('userId');
+//var userName = $.cookie('userName');
+//
+//var MessageModel = Backbone.Model.extend({
+//    defaults: function(){
+//        return {
+//            "id": "",
+//            "username": "",
+//            "content": ""
+//        }
+//    }
+//});
+//var x=0;
+////lambanei
+//var IncomingMessageCollection = Backbone.Collection.extend({
+//    url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({id : userId}),
+//    model: MessageModel
+//
+//});
+//
+//    //_.each(IncomingMessageCollection, function (MessageModel) {
+//    //for ( var i = 0, len = IncomingMessageCollection.localStorage.length; i < len; ++i ) {
+//    //    var msgID = IncomingMessageCollection.localStorage.getItem(IncomingMessageCollection.localStorage.id( i ));
+//    //    if (msgID != MessageModel.id)
+//        // MessageModel.save();
+//        // document.getElementById("result").innerHTML = localStorage.getItem(MessageModel.content);
+//    //    }
+//    //});
+//
+//var messages = new IncomingMessageCollection();
+//var massage = {
+//    updateMessage: function(){
+//        var updateLocalMessageList = function (messages) {
+//            _.each(messages, function (message) {
+//                var isHere = 0;
+//                for ( x; x < localStorage.length; x++) {
+//                    //var k = "messages"+x;
+//                    var db = localStorage.getItem(messages+x);
+//                    //if (db.id === null){break;}
+//                    if (message.id == db.id){
+//                        isHere=1;
+//                    }
+//                }
+//                if (isHere == 0) {
+//                    //localStorage.setItem("messages"+x, message.id + message.username + message.content);
+//                    messages.fetch();
+//                    messages.add(message);
+//                    message.save();
+//                }
+//            });
+//        };
+//        messages.fetch()
+//            .then(updateLocalMessageList);
+//    }};
+//if (typeof(Storage) !== "undefined") {
+//    // Retrieve
+//    document.getElementById("result").innerHTML = localStorage.getItem(messages+x);
+//} else {
+//    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+//}
+////tupwnei
+//var MessageCollection = Backbone.Collection.extend({
+//    model: MessageModel,
+//    localStorage: new Backbone.LocalStorage("messages"+x)
+//});
+//
+//var showMessages = new MessageCollection();
+//var showMessage = {
+//    updateMessage: function(){
+//        var updateCurrentMessageList = function (showMessage) {
+//            var $showMessages = $("#chatbox");
+//            _.each(showMessage, function (messages) {
+//
+//                var $showMessage = $("<div>"+ localStorage.getItem(messages+x) + " : " + localStorage.getItem(messages.content) + "</div>");
+//                $showMessages.append($showMessage);
+//            });
+//        };
+//        showMessages.fetch()
+//            .then(updateCurrentMessageList);
+//    }};
+//
+//MessageCollection.localStorage = new Backbone.LocalStorage("ShowMessage");
+////IncomingMessageCollection.fetch();
+////console.log(MessageCollection.pluck('id'));//emfanisi
 
 function ClearFields() {
     document.getElementById("usermsg").value = "";
 }
 
-setInterval(function () {
-    massage.updateMessage();
-}, 500);
-setInterval(function () {
-    showMessage.updateMessage();
-}, 500);
+//setInterval(function () {
+//    massage.updateMessage();
+//}, 500);
+//setInterval(function () {
+//    showMessage.updateMessage();
+//}, 500);
 //delete message = "<div style='display: none;'>" + message.username + " : " + message.content + "</div>"
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
 
@@ -165,7 +165,7 @@ var sendMessage = function (e) {
         radius: radius,
         duration: timeToSend
     };
-    document.getElementById("result").innerHTML = localStorage.getItem("messages");
+    //document.getElementById("result").innerHTML = localStorage.getItem("messages");
 
     $.post("http://chataround.ddns.net:8080/message", messageInfo)
         .done(function (response) {

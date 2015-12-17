@@ -83,3 +83,7 @@ a:hover {
 .logout {
     float: right;
 }
+li
+{
+    list-style-type: none;
+}
