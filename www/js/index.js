@@ -5,6 +5,7 @@ var NS = {
 
 var userId = $.cookie('userId');
 var userName = $.cookie('userName');
+var sMessage;
 
 var showUserName = function(){
     $("#userName").html(userName)
@@ -68,9 +69,13 @@ var sendLoginInfo = function (e) {
 
     $.post("http://chataround.ddns.net:8080/user", data)
         .done(function (response) {
-            userId = response;
-            $.cookie('userId', userId);
-            window.location.href = "html/main.html";
+            sMessage = response;
+            if (sMessage == "OK") {
+                window.location.href = "html/main.html";
+            }
+            else{
+                window.alert(sMessage)
+            }
         })
         .fail(function (error) {
             console.log(error);
@@ -84,7 +89,7 @@ var sendLogoutInfo = function(e){
 
     $.ajax({
         type: 'DELETE',
-        url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({id : userId})
+        url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
         })
         .done( function(result) {
             window.location.href = "../index.html";

@@ -8,7 +8,7 @@ var MessageModel = Backbone.Model.extend({
     }
 });
 var MessageCollection = Backbone.Collection.extend({
-    url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({id : userId}),
+    url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({username : userName}),
     model: MessageModel
 });
 
@@ -26,7 +26,7 @@ var massage = {
                         var dis = elementsLI[x].id;
                         if (message.id == dis) {
                             isHere = 1;
-                            break;
+                   break;
                         }
                 }
                 if (isHere == 0) {
@@ -42,3 +42,5 @@ var massage = {
 setInterval(function () {
     massage.updateMessage();
 }, 500);
+
+//delete message = "<div style='display: none;'>" + message.username + " : " + message.content + "</div>"
