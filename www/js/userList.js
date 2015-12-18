@@ -29,7 +29,7 @@ function radiusChange() {
         .then(updateFriendList);
 }
 
-$("[name='ok']").on("click", radiusChange);
+$("[name='save']").on("click", radiusChange);
 
 var UserModel = Backbone.Model.extend();
 var UserCollection = Backbone.Collection.extend({

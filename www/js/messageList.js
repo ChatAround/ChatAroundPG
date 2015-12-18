@@ -7,11 +7,11 @@ var MessageModel = Backbone.Model.extend({
         "content": ""
     }
 });
+
 var MessageCollection = Backbone.Collection.extend({
     url: 'http://chataround.ddns.net:8080/message' + '?'+ $.param({username : userName}),
     model: MessageModel
 });
-
 
 var massage = {
     updateMessage: function(){

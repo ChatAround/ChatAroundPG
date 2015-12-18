@@ -19,6 +19,7 @@ window.onload = function() {
         var newRadius = document.getElementById("radius").value;
         if (window.confirm("Save radius?")) {
             document.getElementById("radius").defaultValue = newRadius;
+            radiusChange();
         } else {
             document.getElementById("radius").value = document.getElementById("radius").defaultValue;
         }
