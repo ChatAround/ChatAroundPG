@@ -20,6 +20,7 @@ var massage = {
             var $messages = $("#chatbox1");
             var ul = document.getElementById("chatbox1");
             var elementsLI = ul.getElementsByTagName("li");
+
             _.each(messages, function (message) {
                 var isHere = 0;
                 for (var x = 0; x < elementsLI.length; ++x) {
@@ -34,6 +35,22 @@ var massage = {
                     $messages.append($message);
                 }
             });
+
+            for (var x = 0; x < elementsLI.length; ++x) {
+                var dis = elementsLI[x].id;
+                var deleted = 0;
+                _.each(messages, function (message) {
+                    if ( dis == message.id) {
+                        deleted = 1;
+                    }
+                });
+                if (deleted == 0) {
+                    document.getElementById(dis).style.display = "none";
+                    //$(dat).remove(); done alla anabwsbinei
+                    //document.getElementById(dis).style.visibility = "hidden"; // done alla opws eipa dessmeuei tn xwro
+                }
+            }
+
         };
         messages.fetch()
             .then(updateCurrentMessageList);
@@ -42,5 +59,3 @@ var massage = {
 setInterval(function () {
     massage.updateMessage();
 }, 500);
-
-//delete message = "<div style='display: none;'>" + message.username + " : " + message.content + "</div>"
