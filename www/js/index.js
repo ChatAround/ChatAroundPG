@@ -4,11 +4,11 @@ var NS = {
 };
 
 var userId = $.cookie('userId');
-var userName = $.cookie('userName');
+var username = $.cookie('username');
 var sMessage;
 
 var showUserName = function(){
-    $("#userName").html(userName)
+    $("#userName").html(username)
 };
 
 var showUserId = function (){
@@ -51,50 +51,101 @@ setInterval(function () {
     Location.updateLocation();
 }, 500);
 
-var sendLoginInfo = function (e) {
+//var sendLoginInfo = function (e) {
+//    e.preventDefault();
+//
+//    //var id = "1L";
+//    var username = $("[name='username']").val();
+//    //var password = $("[name='password']")).val();
+//    var latitude = NS.currentLatitude;
+//    var longitude = NS.currentLongitude;
+//    $.cookie('userName', username);
+//
+//    var data = {
+//        username: username,
+//        latitude: latitude,
+//        longitude: longitude
+//    };
+//
+//    $.post("http://chataround.ddns.net:8080/user", data)
+//        .done(function (response) {
+//            sMessage = response;
+//            if (sMessage == "OK") {
+//                window.location.href = "html/main.html";
+//            }
+//            else{
+//                window.alert(sMessage)
+//            }
+//        })
+//        .fail(function (error) {
+//            console.log(error);
+//        });
+//};
+
+var sendLoginInfo = function(e) {
     e.preventDefault();
 
-    //var id = "1L";
     var username = $("[name='username']").val();
-    //var password = $("[name='password']")).val();
+    var password = $("[name='password']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
-    $.cookie('userName', username);
-
-    var data = {
-        username: username,
-        latitude: latitude,
-        longitude: longitude
-    };
-
-    $.post("http://chataround.ddns.net:8080/user", data)
-        .done(function (response) {
-            sMessage = response;
-            if (sMessage == "OK") {
-                window.location.href = "html/main.html";
-            }
-            else{
-                window.alert(sMessage)
-            }
-        })
-        .fail(function (error) {
-            console.log(error);
-        });
-
-};
-
-var sendLogoutInfo = function(e){
-    e.preventDefault();
-    localStorage.clear();
+    var isOnline = true;
+    $.cookie('username', username);
+    $.cookie('password', password);
+    $.cookie('latitude', latitude);
+    $.cookie('longitude', longitude);
+    $.cookie('isOnline', isOnline);
 
     $.ajax({
-            type: 'DELETE',
-            url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
+            type: 'PUT',
+            url: 'http://chataround.ddns.net:8080/user' + '?' + $.param({username: username, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
         })
-        .done( function(result) {
-            window.location.href = "../index.html";
+        .done(function(result) {
+            sMessage = result;
+            if(result == "OK") {
+                window.location.href = "html/main.html";
+            } else {
+                window.alert("No such user or wrong password.")
+            }
+        })
+        .fail(function(error) {
+            console.log(error);
         });
 };
+
+var sendLogoutInfo = function(e) {
+    e.preventDefault();
+
+    $.cookie('username', username);
+    $.cookie('password', password);
+    var latitude = NS.currentLatitude;
+    var longitude = NS.currentLongitude;
+    $.cookie('latitude', latitude);
+    $.cookie('longitude', longitude);
+    var isOnline = false;
+    $.cookie('isOnline', isOnline);
+
+    $.ajax({
+            type: 'PUT',
+            url: 'http://chataround.ddns.net:8080/user' + '?' + $.param({username: username, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
+        })
+        .done(function(result) {
+            window.location.href = "../index.html"
+        })
+};
+
+//var sendLogoutInfo = function(e){
+//    e.preventDefault();
+//    localStorage.clear();
+//
+//    $.ajax({
+//            type: 'DELETE',
+//            url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
+//        })
+//        .done( function(result) {
+//            window.location.href = "../index.html";
+//        });
+//};
 
 $("[name='login']").on("click", sendLoginInfo);
 $("[name='logout']").on("click", sendLogoutInfo);
