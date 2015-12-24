@@ -16,9 +16,6 @@ var Location = {
         var updateCurrentLocation = function (position) {
             NS.currentLatitude = position.coords.latitude;
             NS.currentLongitude = position.coords.longitude;
-            showUserName();
-            showUserId();
-            showLocation();
         };
 
         var throwError = function (error) {
@@ -39,11 +36,15 @@ var Location = {
     }
 };
 
+setInterval(function () {
+    Location.updateLocation();
+}, 500);
+
 var sendRegisterInfo = function(e) {
     e.preventDefault();
 
-    var firstname = $("[name='first_name']").val();
-    var lastname = $("[name='last_name']").val();
+    var firstName = $("[name='first_name']").val();
+    var surName = $("[name='last_name']").val();
     var username = $("[name='username']").val();
     var password = $("[name='password']").val();
     var confirmPass = $("[name='confirm_pass']").val();
@@ -54,7 +55,7 @@ var sendRegisterInfo = function(e) {
     var about = $("[name='about']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
-    var isOnline = true;
+    var isOnline = 1;
     $.cookie('userName', username);
     $.cookie('password', password);
 
@@ -68,8 +69,8 @@ var sendRegisterInfo = function(e) {
 
     var profileData = {
         username: username,
-        firstname: firstname,
-        lastname: lastname,
+        firstName: firstName,
+        surName: surName,
         gender: gender,
         country: country,
         city: city,
@@ -77,9 +78,9 @@ var sendRegisterInfo = function(e) {
         about: about
     };
 
-    if(firstname=="") {
+    if(firstName=="") {
         document.getElementById("lfirst_name").style.display = "inline";
-    } else if(lastname=="") {
+    } else if(surName=="") {
         document.getElementById("llast_name").style.display = "inline";
     } else if(username=="") {
         document.getElementById("lusername").style.display = "inline";
@@ -92,27 +93,27 @@ var sendRegisterInfo = function(e) {
         document.suform.confirm_pass.value = "";
     }  else {
         $.post("http://chataround.ddns.net:8080/user", userData)
-            .done(function (uResponse) {
-                uMessage = uResponse;
+            .done(function (response) {
+                uMessage = response;
                 if (uMessage == "OK") {
                     $.post("http://chataround.ddns.net:8080/userProfile", profileData)
-                        .done(function (pResponse) {
-                            pMessage = pResponse;
+                        .done(function (response) {
+                            pMessage = response;
                             if (pMessage == "OK") {
-                                window.location.href = "../index.html";
+                                window.location.href = "main.html";
                             } else {
                                 window.alert(pMessage)
                             }
                         })
-                        .fail(function (pError) {
-                            console.log(pError);
+                        .fail(function (error) {
+                            console.log(error);
                         });
                 } else {
                     window.alert(uMessage)
                 }
             })
-            .fail(function (uError) {
-                console.log(uError);
+            .fail(function (error) {
+                console.log(error);
             });
     }
 
