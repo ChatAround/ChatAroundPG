@@ -94,8 +94,8 @@ input[type=submit]:active {
 }
 button {
     float: inherit;
-    margin-top: 60px;
-    margin-left: 130px;
+    margin-top: 35px;
+    margin-left: 120px;
     width: 80px;
     height: 30px;
     font-size: 14px;
@@ -105,4 +105,7 @@ button {
     border: 1px solid black;
     box-shadow: 0 1px 2px rgba(0, 0, 0, .3), inset 0 1px 0 rgba(255, 255, 255, .5);
     cursor: pointer;
+}
+#register {
+    font-size: 14px;
 }
