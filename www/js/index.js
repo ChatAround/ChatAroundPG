@@ -5,7 +5,7 @@ var NS = {
 
 var userId = $.cookie('userId');
 var userName = $.cookie('userName');
-var password = $.cookie('password');
+var password = $.cookie('password')
 var sMessage;
 
 var showUserName = function(){
@@ -52,6 +52,8 @@ setInterval(function () {
     Location.updateLocation();
 }, 500);
 
+
+
 var sendLoginInfo = function(e) {
     e.preventDefault();
 
@@ -68,7 +70,7 @@ var sendLoginInfo = function(e) {
 
     $.ajax({
             type: 'PUT',
-            url: 'http:/chataround.ddns.net:8080/user' + '?' + $.param({username: username, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
+            url: 'http://chataround.ddns.net:8080/user' + '?' + $.param({username: username, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
         })
         .done(function(result) {
             sMessage = result;
