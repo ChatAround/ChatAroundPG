@@ -5,6 +5,7 @@ var NS = {
 
 var userId = $.cookie('userId');
 var userName = $.cookie('userName');
+var password = $.cookie('password')
 var sMessage;
 
 var showUserName = function(){
@@ -51,49 +52,56 @@ setInterval(function () {
     Location.updateLocation();
 }, 500);
 
-var sendLoginInfo = function (e) {
+
+
+var sendLoginInfo = function(e) {
     e.preventDefault();
 
-    //var id = "1L";
     var username = $("[name='username']").val();
-    //var password = $("[name='password']")).val();
+    var password = $("[name='password']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
+    var isOnline = true;
     $.cookie('userName', username);
+    $.cookie('password', password);
+    $.cookie('latitude', latitude);
+    $.cookie('longitude', longitude);
+    $.cookie('isOnline', isOnline);
 
-    var data = {
-        username: username,
-        latitude: latitude,
-        longitude: longitude
-    };
-
-    $.post("http://chataround.ddns.net:8080/user", data)
-        .done(function (response) {
-            sMessage = response;
-            if (sMessage == "OK") {
+    $.ajax({
+            type: 'PUT',
+            url: 'http://chataround.ddns.net:8080/user' + '?' + $.param({username: username, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
+        })
+        .done(function(result) {
+            sMessage = result;
+            if(result == "OK") {
                 window.location.href = "html/main.html";
-            }
-            else{
+            } else {
                 window.alert(sMessage)
             }
         })
-        .fail(function (error) {
+        .fail(function(error) {
             console.log(error);
         });
-
 };
 
-var sendLogoutInfo = function(e){
+var sendLogoutInfo = function(e) {
     e.preventDefault();
-    localStorage.clear();
+
+    var latitude = NS.currentLatitude;
+    var longitude = NS.currentLongitude;
+    $.cookie('latitude', latitude);
+    $.cookie('longitude', longitude);
+    var isOnline = false;
+    $.cookie('isOnline', isOnline);
 
     $.ajax({
-            type: 'DELETE',
-            url: 'http://chataround.ddns.net:8080/user' + '?'+ $.param({username : userName})
+            type: 'PUT',
+            url: 'http://chataround.ddns.net:8080/user' + '?' + $.param({username: userName, password: password, latitude: latitude, longitude: longitude, isOnline: isOnline})
         })
-        .done( function(result) {
-            window.location.href = "../index.html";
-        });
+        .done(function(result) {
+            window.location.href = "../index.html"
+        })
 };
 
 $("[name='login']").on("click", sendLoginInfo);

@@ -36,15 +36,15 @@ var Location = {
     }
 };
 
-setInterval(function () {
-    Location.updateLocation();
-}, 500);
-
 var sendRegisterInfo = function(e) {
     e.preventDefault();
 
+    setInterval(function () {
+        Location.updateLocation();
+    }, 500);
+
     var firstName = $("[name='first_name']").val();
-    var surName = $("[name='last_name']").val();
+    var lastName = $("[name='last_name']").val();
     var username = $("[name='username']").val();
     var password = $("[name='password']").val();
     var confirmPass = $("[name='confirm_pass']").val();
@@ -55,7 +55,7 @@ var sendRegisterInfo = function(e) {
     var about = $("[name='about']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
-    var isOnline = 1;
+    var isOnline = true;
     $.cookie('userName', username);
     $.cookie('password', password);
 
@@ -69,8 +69,8 @@ var sendRegisterInfo = function(e) {
 
     var profileData = {
         username: username,
-        firstName: firstName,
-        surName: surName,
+        firstname: firstName,
+        lastname: lastName,
         gender: gender,
         country: country,
         city: city,
@@ -80,7 +80,7 @@ var sendRegisterInfo = function(e) {
 
     if(firstName=="") {
         document.getElementById("lfirst_name").style.display = "inline";
-    } else if(surName=="") {
+    } else if(lastName=="") {
         document.getElementById("llast_name").style.display = "inline";
     } else if(username=="") {
         document.getElementById("lusername").style.display = "inline";
