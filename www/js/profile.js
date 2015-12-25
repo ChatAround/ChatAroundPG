@@ -1,6 +1,6 @@
 /**
- * Created by Stratos on 25/12/2015.
- */
+    * @author Stratos
+    */
 var userName = $.cookie('userName');
 
     //get and update profile values
@@ -19,7 +19,7 @@ var userName = $.cookie('userName');
     });
 
     var userProfileCollection = Backbone.Collection.extend({
-        url: 'http://localhost:8080/userProfile' + '?' + $.param({username: userName}),
+        url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName}),
         model: userProfileModel
     });
 
@@ -48,10 +48,11 @@ var userName = $.cookie('userName');
         var birthday = document.getElementById("birthday").value;
         var gender = document.getElementById("gender").value;
         var about = document.getElementById("about".value);
+        var birth=birthday.replace(/-/g, "/");
 
         $.ajax({
                 type: 'PUT',
-                url: 'http:/localhost:8080/userProfile' + '?' + $.param({username: username,firstName: firstname, lastName: lastname,  gender: gender, country: country, city: city,birthday: birthday,about:about})
+                url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName,firstName: firstname, surName: lastname,  gender: gender, country: country, city: city,birthday: birth,about:about})
             })
             .done(function(result) {
                 window.alert("Changes saved!")
@@ -154,28 +155,8 @@ window.onload = function() {
     };
 
 
-    document.getElementById("editA").onclick = function() {
-        document.getElementById('age').disabled = false;
-        document.getElementById('age').style.border = '1px solid blue';
-        document.getElementById("age").focus();
-    };
-    document.getElementById("age").onblur = function() {
-        var newA = document.getElementById("age").value;
-        if (newA != document.getElementById("age").defaultValue) {
-            if (window.confirm("Save age?")) {
-                document.getElementById("age").defaultValue = newA;
-                document.getElementById("age").style.border = 'none';
-                document.getElementById("age").disabled = true;
-            } else {
-                document.getElementById("age").value = document.getElementById("age").defaultValue;
-                document.getElementById("age").style.border = 'none';
-                document.getElementById("age").disabled = true;
-            }
-        } else {
-            document.getElementById("age").style.border = 'none';
-            document.getElementById("age").disabled = true;
-        }
-    };
+
+
 
     document.getElementById("editB").onclick = function() {
         document.getElementById('birthday').disabled = false;
@@ -247,5 +228,4 @@ window.onload = function() {
     };
 };
 
-$("[name='users']").on("click", getProfile);
 $("[name='saveProfile']").on('click', updateProfile);

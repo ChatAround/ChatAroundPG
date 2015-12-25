@@ -1,6 +1,6 @@
 /**
- * Created by Stratos on 12/20/2015.
- */
+    * @author Stratos
+    */
 
 var NS = {
     currentLatitude: null,
@@ -36,12 +36,14 @@ var Location = {
     }
 };
 
+setInterval(function () {
+    Location.updateLocation();
+}, 500);
+
 var sendRegisterInfo = function(e) {
     e.preventDefault();
 
-    setInterval(function () {
-        Location.updateLocation();
-    }, 500);
+
 
     var firstName = $("[name='first_name']").val();
     var lastName = $("[name='last_name']").val();
@@ -69,8 +71,8 @@ var sendRegisterInfo = function(e) {
 
     var profileData = {
         username: username,
-        firstname: firstName,
-        lastname: lastName,
+        firstName: firstName,
+        surName: lastName,
         gender: gender,
         country: country,
         city: city,
