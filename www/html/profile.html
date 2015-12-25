@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Around</title>
+    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+</head>
+<body>
+
+    <dl>
+        <dt id="header"><label id="header-title">ChatAround</label></dt>
+        <dl class="dropdown" style="float:right;list-style-type:none;">
+            <dt><a class="user" href="#"><span id="userName"></span></a></dt>
+            <div class="dropdown-content">
+                <button id="settingsBtn">Settings</button> <br>
+                <button id="logout" type="button" name="logout">Logout</button>
+            </div>
+        </dl>
+    </dl>
+
+    <div id="ProfilePage">
+        <div id="LeftCol">
+            <div id="Photo">  </div>
+        </div>
+
+        <div id="Info">
+            <p>
+                <strong>First Name:</strong>
+                <input type="text" id="firstname" value="" disabled/>
+                <input type="image" id="editFN" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>Last Name:</strong>
+                <input type="text" id="lastname" value="" disabled/>
+                <input type="image" id="editLN" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>Username:</strong>
+                <input type="text" id="prof_user" value="" disabled/>
+            </p>
+            <!--<p>-->
+            <!--<strong>Email:</strong>-->
+            <!--<input type="text" id="email" value="email@example.com" disabled/>-->
+            <!--</p>-->
+            <p>
+                <strong>Country:</strong>
+                <input type="text" id="country" value="" disabled/>
+                <input type="image" id="editCo" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>City:</strong>
+                <input type="text" id="city" value="" disabled/>
+                <input type="image" id="editCi" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>Age:</strong>
+                <input type="text" id="age" value="" disabled/>
+                <input type="image" id="editA" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>Birthday:</strong>
+                <input type="date" id="birthday" value="" disabled/>
+                <input type="image" id="editB" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <strong>Gender:</strong>
+                <select id="gender" disabled>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                <input type="image" id="editG" src="../img/edit.png" width="15" height="15">
+            </p>
+            <p>
+                <button type="button" name="saveProfile">Save</button>
+            </p>
+        </div>
+        <div style="clear:both"></div>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <br>
+        <label>Radius: </label>
+        <input id="radius" name="radius" type="text" value= 1000> <br> <br>
+        <label>Message timer: </label>
+        <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;&nbsp;
+        <select name="duration" id="duration">
+            <option value="0">Minutes</option>
+            <option value="1">Hours</option>
+            <option value="2">Days</option>
+            <option value="3">For Ever And Ever</option>
+        </select> <br> <br> <br> <br>
+        <button name="save">Save</button>
+        <button id="closeBtn">Close</button>
+    </div>
+
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/backbone/backbone.js"></script>
+    <script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
+    <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
+    <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>
