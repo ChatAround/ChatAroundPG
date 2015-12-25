@@ -5,7 +5,7 @@ var NS = {
 
 var userId = $.cookie('userId');
 var userName = $.cookie('userName');
-var password = $.cookie('password')
+var password = $.cookie('password');
 var sMessage;
 
 var showUserName = function(){
