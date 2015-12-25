@@ -1,93 +1,66 @@
 /**
  * Created by Stratos on 25/12/2015.
  */
-
 var userName = $.cookie('userName');
 
-var userProfileModel = Backbone.Model.extend({
-    defaults: {
-        "firstname": "",
-        "lastname": "",
-        "username": "",
-        "country": "",
-        "city": "",
-        "age": "",
-        "birthday": "",
-        "gender": ""
-    }
-});
+    //get and update profile values
 
-var userProfileCollection = Backbone.Collection.extend({
-    url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName}),
-    model: userProfileModel
-});
-
-var getProfile = function(UserProfile) {
-    document.getElementById("firstname").value = UserProfile.firstname;
-    document.getElementById("lastname").value = UserProfile.lastname;
-    document.getElementById("prof_user").value = UserProfile.username;
-    document.getElementById("country").value = UserProfile.country;
-    document.getElementById("city").value = UserProfile.city;
-    document.getElementById("age").value = UserProfile.age;
-    document.getElementById("birthday").value = UserProfile.birthday;
-    document.getElementById("gender").value = UserProfile.gender;
-};
-
-var updateProfile = function() {
-    var firstname = document.getElementById("firstname").val();
-    var lastname = document.getElementById("lastname").val();
-    var country = document.getElementById("country").val();
-    var city = document.getElementById("city").val();
-    var age = document.getElementById("age").val();
-    var birthday = document.getElementById("birthday").val();
-    var gender = document.getElementById("gender").val();
-
-    $.ajax({
-        type: 'PUT',
-        url: 'http:/chataround.ddns.net:8080/userProfile' + '?' + $.param({firstName: firstname, lastName: lastname, username: userName, country: country, city: city, age: age, birthday: birthday, gender: gender})
-    })
-        .done(function(result) {
-            window.alert("Changes saved!")
-        })
-};
-
-
-window.onload = function() {
-
-    //popup
-    document.getElementById("settingsBtn").onclick = function(){
-        var overlay = document.getElementById("overlay");
-        var popup = document.getElementById("popup");
-        overlay.style.display = "block";
-        popup.style.display = "block";
-    };
-
-    document.getElementById("closeBtn").onclick = function() {
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("popup").style.display = "none";
-    };
-
-    document.getElementById("radius").onchange = function() {
-        var newRadius = document.getElementById("radius").value;
-        if (window.confirm("Save radius?")) {
-            document.getElementById("radius").defaultValue = newRadius;
-            radiusChange();
-        } else {
-            document.getElementById("radius").value = document.getElementById("radius").defaultValue;
+    var userProfileModel = Backbone.Model.extend({
+        defaults: {
+            "username": "",
+            "firstName": "",
+            "surName": "",
+            "gender": "",
+            "country": "",
+            "city": "",
+            "birthday": "",
+            "about":" "
         }
+    });
+
+    var userProfileCollection = Backbone.Collection.extend({
+        url: 'http://localhost:8080/userProfile' + '?' + $.param({username: userName}),
+        model: userProfileModel
+    });
+
+    var UserProfile = new userProfileCollection();
+
+    var getProfile = function(UserProfile) {
+        $('#prof_user').val(UserProfile.username);
+        $('#firstname').val(UserProfile.firstName);
+        $('#lastname').val(UserProfile.surName);
+        $('#gender').val(UserProfile.gender);
+        $('#country').val(UserProfile.country);
+        $('#city').val(UserProfile.city);
+        $('#birthday').val(UserProfile.birthday);
+        $('#about').val(UserProfile.about);
     };
 
-    document.getElementById("selectedTime").onchange = function() {
-        var newTime = document.getElementById("selectedTime").value;
-        if (window.confirm("Save time?")) {
-            document.getElementById("selectedTime").defaultValue = newTime;
-        } else {
-            document.getElementById("selectedTime").value = document.getElementById("selectedTime").defaultValue;
-        }
+    UserProfile.fetch()
+        .then(getProfile);
+
+    var updateProfile = function() {
+        var username = document.getElementById("prof_user").value;
+        var firstname = document.getElementById("firstname").value;
+        var lastname = document.getElementById("lastname").value;
+        var country = document.getElementById("country").value;
+        var city = document.getElementById("city").value;
+        var birthday = document.getElementById("birthday").value;
+        var gender = document.getElementById("gender").value;
+        var about = document.getElementById("about".value);
+
+        $.ajax({
+                type: 'PUT',
+                url: 'http:/localhost:8080/userProfile' + '?' + $.param({username: username,firstName: firstname, lastName: lastname,  gender: gender, country: country, city: city,birthday: birthday,about:about})
+            })
+            .done(function(result) {
+                window.alert("Changes saved!")
+            })
     };
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 //edit profile
-
+window.onload = function() {
     document.getElementById("editFN").onclick = function() {
         document.getElementById('firstname').disabled = false;
         document.getElementById('firstname').style.border = '1px solid blue';
@@ -248,7 +221,30 @@ window.onload = function() {
             document.getElementById('gender').style.border = 'none';
             document.getElementById('gender').disabled = true;
         }
-    }
+    };
+
+    document.getElementById("editAbout").onclick = function() {
+        document.getElementById('about').disabled = false;
+        document.getElementById('about').style.border = '1px solid blue';
+        document.getElementById('about').focus();
+    };
+    document.getElementById('about').onblur = function() {
+        var newG = document.getElementById('about').value;
+        if (newG != document.getElementById('about').defaultValue) {
+            if (window.confirm("Save informations?")) {
+                document.getElementById('about').defaultValue = newG;
+                document.getElementById('about').style.border = 'none';
+                document.getElementById('about').disabled = true;
+            } else {
+                document.getElementById('about').value = document.getElementById('about').defaultValue;
+                document.getElementById('about').style.border = 'none';
+                document.getElementById('about').disabled = true;
+            }
+        } else {
+            document.getElementById('gender').style.border = 'none';
+            document.getElementById('gender').disabled = true;
+        }
+    };
 };
 
 $("[name='users']").on("click", getProfile);
