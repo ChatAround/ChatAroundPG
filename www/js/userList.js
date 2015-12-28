@@ -19,7 +19,7 @@ function radiusChange() {
         _.each(users, function (user) {
             var currentUser = user.username;
             if (currentUser != userName) {
-                var $user = $("<div>" + user.username + "</div>");
+                var $user = $("<div><a href='profile.html'>" + user.username + "</a></div>");
                 $users.append($user);
             }
         });
@@ -43,7 +43,7 @@ var updateFriendList = function (users) {
     _.each(users, function (user) {
         var currentUser = user.username;
         if (currentUser != userName) {
-            var $user = $("<div>" + user.username + "</div>");
+            var $user = $("<div><a href='profile.html'>" + user.username + "</a></div>");
             $users.append($user);
         }
     });
