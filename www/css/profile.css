@@ -17,86 +17,52 @@ dt a {
     display: block;
     color: black;
     text-align: center;
-    padding: 14px 16px;
+    padding-left: 16px;
     text-decoration: none;
-}
-#header {
-    padding-top: 5px;
 }
 #header-title {
     font-weight: bold;
     font-size: 35px;
     top: 15px;
-    margin-top: 5px;
-    padding-left: 15px;
     font-family: Chaparral Pro Light, serif;
 }
 #ProfilePage {
-    /* Move it off the top of the page, then centre it horizontally */
     margin-top: 50px;
     margin-left: 10px;
     width: 635px;
-
-    /* For visibility. Delete me */
-    /*border: 1px solid white;*/
 }
 #LeftCol {
-    /* Move it to the left */
     float: left;
 
     width: 200px;
     text-align: center;
-
-    /* Move it away from the content */
     margin-right: 20px;
-
-    /* For visibility. Delete me */
-    /*border: 1px solid brown;*/
 }
 #Photo {
-    /* Width and height of photo container */
     width: 200px;
     height: 200px;
-
-    /* For visibility. Delete me */
     border: 1px solid green;
 }
 #PhotoOptions {
     text-align: center;
     width: 200px;
-
-    /* For visibility. Delete me */
-    /*border: 1px solid brown;*/
 }
 #Info {
     width: 400px;
     text-align: left;
-
-    /* Move it to the right */
     float: right;
-
-    /* For visibility. Delete me */
-    /*border: 1px solid blue;*/
 }
 #Info strong {
-    /* Give it a width */
     display: inline-block;
     width: 90px;
-
-    /* For visibility. Delete me */
-    /*border: 1px solid orange;*/
 }
 #Info input[type="text"], input[type="date"], textarea {
-    /* Give it a width */
     display: inline;
     background-color: white;
     border: 0;
 
     text-align: left;
     width: 200px;
-
-    /* For visibility. Delete me */
-    /*border-bottom: 1px solid blue;*/
 }
 #gender {
     -webkit-appearance: none;
@@ -115,29 +81,6 @@ dt a {
     border: none;
     cursor: pointer;
 }
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-.dropdown-content {
-    display: none;
-    position: inherit;
-    float: inherit;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-.dropdown-content a {
-    color: black;
-    padding: 5px 5px;
-    text-decoration: none;
-    display: block;
-}
-.dropdown-content a:hover {
-    background-color: #f1f1f1
-}
-.dropdown:hover .dropdown-content {
-    display: block;
-}
 #logout {
     border: 0;
     align-content: center;
@@ -145,4 +88,110 @@ dt a {
 }
 #logout:hover {
     background-color: #f1f1f1;
+}
+
+#dp {
+    position: absolute;
+    display: block;
+    float: right;
+    right: 0;
+    top: 0;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+#dp .wrapper {
+    display: inline-block;
+    width: 180px;
+    margin: 0 10px 0 0;
+    height: 20px;
+    position: relative;
+}
+
+#dp .parent {
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    line-height: 30px;
+    height: 30px;
+    background: #0e90d2;
+    color: #282D31;
+    font-weight: bold;
+    z-index: 2;
+    position: relative;
+    -webkit-transition: border-radius .1s linear, background .1s linear, z-index 0s linear;
+    -webkit-transition-delay: .8s;
+    text-align: center;
+}
+
+#dp .parent:hover,
+#dp .content:hover ~ .parent {
+    background: #0e90d2;
+    -webkit-transition-delay: 0s, 0s, 0s;
+}
+
+#dp .content:hover ~ .parent {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 0;
+}
+
+#dp .content {
+    position: absolute;
+    top: 0;
+    display: block;
+    z-index: 1;
+    height: 0;
+    width: 180px;
+    padding-top: 30px;
+    -webkit-transition: height .5s ease;
+    -webkit-transition-delay: .4s;
+    border-radius: 5px;
+}
+
+#dp .wrapper:active .content {
+    height: 123px;
+    z-index: 3;
+    -webkit-transition-delay: 0s;
+}
+
+#dp .content:hover {
+    height: 123px;
+    z-index: 3;
+    -webkit-transition-delay: 0s;
+}
+
+
+#dp .content dl {
+    background: #0e90d2;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 20%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#dp .content dl a {
+    text-decoration: none;
+}
+
+#dp .content dt:hover {
+    background: #eee;
+    color: #0e90d2;
+}
+
+#dp .content dt {
+    list-style: none;
+    text-align: left;
+    color: #888;
+    font-size: 14px;
+    line-height: 30px;
+    height: 30px;
+    padding-left: 10px;
+    border-top: 1px solid #ccc;
+}
+
+#dp .content dt:last-of-type {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

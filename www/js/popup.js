@@ -3,6 +3,10 @@
  */
 
 window.onload = function() {
+    document.getElementById("showProfile").onclick = function(){
+        window.location.href = "profile.html";
+    };
+
     document.getElementById("settingsBtn").onclick = function(){
         var overlay = document.getElementById("overlay");
         var popup = document.getElementById("popup");

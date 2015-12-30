@@ -8,14 +8,21 @@
 <body>
 
     <dl>
-        <dt id="header"><label id="header-title">ChatAround</label></dt>
+        <dt id="header"><label id="header-title"><a href="main.html">ChatAround</a></label></dt>
         <dl class="dropdown" style="float:right;list-style-type:none;">
-            <dt><a class="user" href="#"><span id="userName"></span></a></dt>
-            <div class="dropdown-content">
-                <button id="logout" type="button" name="logout">Logout</button>
-            </div>
         </dl>
     </dl>
+
+    <div id="dp">
+        <div class="wrapper">
+            <div class="content">
+                <dl>
+                    <button id="logout" type="button" name="logout">Logout</button>
+                </dl>
+            </div>
+            <div class="parent"><a class="user" href="#"><span id="userName"></span></a></div>
+        </div>
+    </div>
 
     <div id="ProfilePage">
         <div id="LeftCol">
@@ -26,21 +33,15 @@
             <p>
                 <strong>First Name:</strong>
                 <input type="text" id="firstname" value="" disabled/>
-                <input type="image" id="editFN" src="../img/edit.png" width="15" height="15">
             </p>
             <p>
                 <strong>Last Name:</strong>
                 <input type="text" id="lastname" value="" disabled/>
-                <input type="image" id="editLN" src="../img/edit.png" width="15" height="15">
             </p>
             <p>
                 <strong>Username:</strong>
                 <input type="text" id="prof_user" value="" disabled/>
             </p>
-            <!--<p>-->
-            <!--<strong>Email:</strong>-->
-            <!--<input type="text" id="email" value="email@example.com" disabled/>-->
-            <!--</p>-->
             <p>
                 <strong>Country:</strong>
                 <input type="text" id="country" value="" disabled/>
@@ -55,7 +56,6 @@
             <p>
                 <strong>Birthday:</strong>
                 <input type="text" id="birthday" value=""  disabled/>
-                <input type="image" id="editB" src="../img/edit.png" width="15" height="15">
             </p>
             <p>
                 <strong>Gender:</strong>
@@ -71,7 +71,7 @@
                 <input type="image" id="editAbout" src="../img/edit.png" width="15" height="15">
             </p>
             <p>
-                <button type="button" name="saveProfile">Save</button>
+                <button type="button" name="saveProfile" id="saveProfile" hidden>Save</button>
             </p>
         </div>
         <div style="clear:both"></div>

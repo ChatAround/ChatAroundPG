@@ -10,14 +10,20 @@
 
     <dl>
         <dt id="header"><label id="header-title">ChatAround</label></dt>
-        <dl class="dropdown" style="float:right;list-style-type:none;">
-            <dt><a class="user" href="profile.html"><span id="userName"></span></a></dt>
-            <div class="dropdown-content">
-                <button id="settingsBtn">Settings</button> <br>
-                <button id="logout" type="button" name="logout">Logout</button>
-            </div>
-        </dl>
     </dl>
+
+    <div id="dp">
+        <div class="wrapper">
+            <div class="content">
+                <dl>
+                    <button id="showProfile">My profile</button> <br>
+                    <button id="settingsBtn">Settings</button> <br>
+                    <button id="logout" type="button" name="logout">Logout</button>
+                </dl>
+            </div>
+            <div class="parent"><a class="user" href="#"><span id="userName"></span></a></div>
+        </div>
+    </div>
 
     <div id="users-wrapper">
         <p>Online Users</p>

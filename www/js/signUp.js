@@ -44,7 +44,6 @@ var sendRegisterInfo = function(e) {
     e.preventDefault();
 
 
-
     var firstName = $("[name='first_name']").val();
     var lastName = $("[name='last_name']").val();
     var username = $("[name='username']").val();
@@ -53,7 +52,10 @@ var sendRegisterInfo = function(e) {
     var gender = $("[name='gender']").val();
     var country = $("[name='country']").val();
     var city = $("[name='city']").val();
-    var birthday = $("[name='birthday']").val();
+    var birthyear = $("[name='birthday_year']").val();
+    var birthmonth = $("[name='birthday_month']").val();
+    var birthday_day = $("[name='birthday_day']").val();
+    var birthday = birthyear + '/' + birthmonth + '/' + birthday_day;
     var about = $("[name='about']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
@@ -80,20 +82,26 @@ var sendRegisterInfo = function(e) {
         about: about
     };
 
-    if(firstName=="") {
+    if (firstName == "") {
         document.getElementById("lfirst_name").style.display = "inline";
-    } else if(lastName=="") {
+    } else if (lastName == "") {
         document.getElementById("llast_name").style.display = "inline";
-    } else if(username=="") {
+    } else if (username == "") {
         document.getElementById("lusername").style.display = "inline";
-    } else if(password=="" || confirmPass=="") {
+    } else if (password == "" || confirmPass == "") {
         document.getElementById("lpassword").style.display = "inline";
         document.suform.password.value = "";
         document.suform.confirm_pass.value = "";
-    } else if(password!=confirmPass) {
+    } else if (password != confirmPass) {
         document.getElementById("lconfirm_pass").style.display = "inline";
         document.suform.confirm_pass.value = "";
-    }  else {
+    } else if (birthyear == "" || birthyear < 1950 || birthyear > 2050) {
+        document.getElementById("lbirthday_year").style.display = "inline";
+    } else if (birthmonth == "" || birthmonth < 01 || birthmonth > 12) {
+        document.getElementById("lbirthday_month").style.display = "inline";
+    } else if (birthday_day == "" || birthday_day < 01 || birthday_day > 31) {
+        document.getElementById("lbirthday_day").style.display = "inline";
+    } else {
         $.post("http://chataround.ddns.net:8080/user", userData)
             .done(function (response) {
                 uMessage = response;
@@ -140,6 +148,15 @@ function hidePCLabel() {
 function hideELabel() {
     document.getElementById("lemail").style.display = "none";
 }
+function hideBDYLabel() {
+    document.getElementById("lbirthday_year").style.display = "none";
+}
+function hideBDMLabel() {
+    document.getElementById("lbirthday_month").style.display = "none";
+}
+function hideBDDLabel() {
+    document.getElementById("lbirthday_day").style.display = "none";
+}
 
 
 $("[name='first_name']").on("click", hideFNLabel);
@@ -147,6 +164,8 @@ $("[name='last_name']").on("click", hideLNLabel);
 $("[name='username']").on("click", hideUNLabel);
 $("[name='password']").on("click", hidePLabel);
 $("[name='confirm_pass']").on("click", hidePCLabel);
-$("[name='email']").on("click", hideELabel);
+$("[name='birthday_year']").on("click", hideBDYLabel);
+$("[name='birthday_month']").on("click", hideBDMLabel);
+$("[name='birthday_day']").on("click", hideBDDLabel);
 
 $("[name='register']").on("click", sendRegisterInfo);
