@@ -2,6 +2,43 @@
     * @author Stratos
     */
 
+var yearBox = document.getElementById('birthday_year');
+for (var i = 1950; i <= 2016; i++) {
+    var yearOption = document.createElement('option');
+    yearOption.value = i;
+    yearOption.innerHTML = i;
+    yearBox.appendChild(yearOption);
+}
+
+var monthBox = document.getElementById('birthday_month');
+for (var w = 1; w <= 9; w++) {
+    var monthOption1 = document.createElement('option');
+    monthOption1.value = "0" + w;
+    monthOption1.innerHTML = "0" + w;
+    monthBox.appendChild(monthOption1);
+}
+for (var j = 10; j <= 12; j++) {
+    var monthOption = document.createElement('option');
+    monthOption.value = j;
+    monthOption.innerHTML = j;
+    monthBox.appendChild(monthOption);
+}
+
+var dayBox = document.getElementById('birthday_day');
+for (var q = 1; q <= 9; q++) {
+    var dayOption1 = document.createElement('option');
+    dayOption1.value = "0" + q;
+    dayOption1.innerHTML = "0" + q;
+    dayBox.appendChild(dayOption1);
+}
+for (var k = 10; k <= 31; k++) {
+    var dayOption = document.createElement('option');
+    dayOption.value = k;
+    dayOption.innerHTML = k;
+    dayBox.appendChild(dayOption);
+}
+
+
 var NS = {
     currentLatitude: null,
     currentLongitude: null
@@ -52,10 +89,10 @@ var sendRegisterInfo = function(e) {
     var gender = $("[name='gender']").val();
     var country = $("[name='country']").val();
     var city = $("[name='city']").val();
-    var birthyear = $("[name='birthday_year']").val();
-    var birthmonth = $("[name='birthday_month']").val();
-    var birthday_day = $("[name='birthday_day']").val();
-    var birthday = birthyear + '/' + birthmonth + '/' + birthday_day;
+    var birthyear = $("[name='birthday_year']")
+    var birthmonth = $("[name='birthday_month']")
+    var birthday_day = $("[name='birthday_day']")
+    var birthday = birthyear.val() + '/' + birthmonth.val() + '/' + birthday_day.val();
     var about = $("[name='about']").val();
     var latitude = NS.currentLatitude;
     var longitude = NS.currentLongitude;
@@ -95,12 +132,12 @@ var sendRegisterInfo = function(e) {
     } else if (password != confirmPass) {
         document.getElementById("lconfirm_pass").style.display = "inline";
         document.suform.confirm_pass.value = "";
-    } else if (birthyear == "" || birthyear < 1950 || birthyear > 2050) {
-        document.getElementById("lbirthday_year").style.display = "inline";
-    } else if (birthmonth == "" || birthmonth < 01 || birthmonth > 12) {
-        document.getElementById("lbirthday_month").style.display = "inline";
-    } else if (birthday_day == "" || birthday_day < 01 || birthday_day > 31) {
-        document.getElementById("lbirthday_day").style.display = "inline";
+    } else if (birthyear.val() == "0") {
+        document.getElementById("lbirthday").style.display = "inline";
+    } else if (birthmonth.val() == "0") {
+        document.getElementById("lbirthday").style.display = "inline";
+    } else if (birthday_day.val() == "0") {
+        document.getElementById("lbirthday").style.display = "inline";
     } else {
         $.post("http://chataround.ddns.net:8080/user", userData)
             .done(function (response) {
@@ -145,17 +182,8 @@ function hidePLabel() {
 function hidePCLabel() {
     document.getElementById("lconfirm_pass").style.display = "none";
 }
-function hideELabel() {
-    document.getElementById("lemail").style.display = "none";
-}
-function hideBDYLabel() {
-    document.getElementById("lbirthday_year").style.display = "none";
-}
-function hideBDMLabel() {
-    document.getElementById("lbirthday_month").style.display = "none";
-}
-function hideBDDLabel() {
-    document.getElementById("lbirthday_day").style.display = "none";
+function hideBDLabel() {
+    document.getElementById("lbirthday").style.display = "none";
 }
 
 
@@ -164,8 +192,8 @@ $("[name='last_name']").on("click", hideLNLabel);
 $("[name='username']").on("click", hideUNLabel);
 $("[name='password']").on("click", hidePLabel);
 $("[name='confirm_pass']").on("click", hidePCLabel);
-$("[name='birthday_year']").on("click", hideBDYLabel);
-$("[name='birthday_month']").on("click", hideBDMLabel);
-$("[name='birthday_day']").on("click", hideBDDLabel);
+$("[name='birthday_year']").on("click", hideBDLabel);
+$("[name='birthday_month']").on("click", hideBDLabel);
+$("[name='birthday_day']").on("click", hideBDLabel);
 
 $("[name='register']").on("click", sendRegisterInfo);
