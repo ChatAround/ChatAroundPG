@@ -14,7 +14,7 @@ var userName = $.cookie('userName');
             "country": "",
             "city": "",
             "birthday": "",
-            "about":" "
+            "about": ""
         }
     });
 

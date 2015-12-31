@@ -1,5 +1,5 @@
 var userId = $.cookie('userId');
-
+var otherUser;
 
 
 
@@ -61,3 +61,9 @@ var userlist= {
 setInterval(function () {
     userlist.updateUsers();
 }, 500);
+
+$("#users li").click(function() {
+    otherUser = this.id;
+    localStorage.setItem("storageName", otherUser);
+    window.location.href = "otherProfile.html";
+});
