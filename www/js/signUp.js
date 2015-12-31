@@ -1,6 +1,6 @@
 /**
     * @author Stratos
-    */
+*/
 
 var yearBox = document.getElementById('birthday_year');
 for (var i = 1950; i <= 2016; i++) {
@@ -89,9 +89,9 @@ var sendRegisterInfo = function(e) {
     var gender = $("[name='gender']").val();
     var country = $("[name='country']").val();
     var city = $("[name='city']").val();
-    var birthyear = $("[name='birthday_year']")
-    var birthmonth = $("[name='birthday_month']")
-    var birthday_day = $("[name='birthday_day']")
+    var birthyear = $("[name='birthday_year']");
+    var birthmonth = $("[name='birthday_month']");
+    var birthday_day = $("[name='birthday_day']");
     var birthday = birthyear.val() + '/' + birthmonth.val() + '/' + birthday_day.val();
     var about = $("[name='about']").val();
     var latitude = NS.currentLatitude;
