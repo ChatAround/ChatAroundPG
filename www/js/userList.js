@@ -30,7 +30,7 @@ var userlist= {
 
                 }
                 if (isHere == 0 && user.username!=userName) {
-                    var $user = $("</l id='" + user.username + "'>" + user.username + "</li>");
+                    var $user = $("<li id='" + user.username + "'>" + user.username + "</li>");
                     $users.append($user);
                 }
                if(document.getElementById(dis).style.display = "none" && isHere == 1){
