@@ -2,7 +2,12 @@
  * Created by Stratos on 12/14/2015.
  */
 
+
 window.onload = function() {
+    document.getElementById("showProfile").onclick = function(){
+        window.location.href = "profile.html";
+    };
+
     document.getElementById("settingsBtn").onclick = function(){
         var overlay = document.getElementById("overlay");
         var popup = document.getElementById("popup");
@@ -19,10 +24,10 @@ window.onload = function() {
         var newRadius = document.getElementById("radius").value;
         if (window.confirm("Save radius?")) {
             document.getElementById("radius").defaultValue = newRadius;
-            radiusChange();
         } else {
             document.getElementById("radius").value = document.getElementById("radius").defaultValue;
         }
+
     };
 
     document.getElementById("selectedTime").onchange = function() {

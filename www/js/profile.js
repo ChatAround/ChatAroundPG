@@ -1,6 +1,6 @@
 /**
     * @author Stratos
-    */
+*/
 var userName = $.cookie('userName');
 
     //get and update profile values
@@ -14,7 +14,7 @@ var userName = $.cookie('userName');
             "country": "",
             "city": "",
             "birthday": "",
-            "about":" "
+            "about": ""
         }
     });
 
@@ -48,11 +48,11 @@ var userName = $.cookie('userName');
         var birthday = document.getElementById("birthday").value;
         var gender = document.getElementById("gender").value;
         var about = document.getElementById("about".value);
-        var birth=birthday.replace(/-/g, "/");
+        var birth = birthday.replace(/-/g, "/");
 
         $.ajax({
                 type: 'PUT',
-                url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName,firstName: firstname, surName: lastname,  gender: gender, country: country, city: city,birthday: birth,about:about})
+                url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName,firstName: firstname, surName: lastname, gender: gender, country: country, city: city, birthday: birth, about:about})
             })
             .done(function(result) {
                 window.alert("Changes saved!")
@@ -62,52 +62,6 @@ var userName = $.cookie('userName');
 
 //edit profile
 window.onload = function() {
-    document.getElementById("editFN").onclick = function() {
-        document.getElementById('firstname').disabled = false;
-        document.getElementById('firstname').style.border = '1px solid blue';
-        document.getElementById("firstname").focus();
-    };
-    document.getElementById("firstname").onblur = function() {
-        var newFN = document.getElementById("firstname").value;
-        if (newFN != document.getElementById("firstname").defaultValue) {
-            if (window.confirm("Change first name?")) {
-                document.getElementById("firstname").defaultValue = newFN;
-                document.getElementById("firstname").style.border = 'none';
-                document.getElementById("firstname").disabled = true;
-            } else {
-                document.getElementById("firstname").value = document.getElementById("firstname").defaultValue;
-                document.getElementById("firstname").style.border = 'none';
-                document.getElementById("firstname").disabled = true;
-            }
-        } else {
-            document.getElementById("firstname").style.border = 'none';
-            document.getElementById("firstname").disabled = true;
-        }
-    };
-
-    document.getElementById("editLN").onclick = function() {
-        document.getElementById('lastname').disabled = false;
-        document.getElementById('lastname').style.border = '1px solid blue';
-        document.getElementById('lastname').focus();
-    };
-    document.getElementById("lastname").onblur = function() {
-        var newLN = document.getElementById("lastname").value;
-        if (newLN != document.getElementById("lastname").defaultValue) {
-            if (window.confirm("Save last name?")) {
-                document.getElementById("lastname").defaultValue = newLN;
-                document.getElementById("lastname").style.border = 'none';
-                document.getElementById("lastname").disabled = true;
-            } else {
-                document.getElementById("lastname").value = document.getElementById("lastname").defaultValue;
-                document.getElementById("lastname").style.border = 'none';
-                document.getElementById("lastname").disabled = true;
-            }
-        }else {
-            document.getElementById("lastname").style.border = 'none';
-            document.getElementById("lastname").disabled = true;
-        }
-    };
-
     document.getElementById("editCo").onclick = function() {
         document.getElementById("country").disabled = false;
         document.getElementById("country").style.border = '1px solid blue';
@@ -120,6 +74,7 @@ window.onload = function() {
                 document.getElementById("country").defaultValue = newC;
                 document.getElementById("country").style.border = 'none';
                 document.getElementById("country").disabled = true;
+                document.getElementById("saveProfile").hidden = false;
             } else {
                 document.getElementById("country").value = document.getElementById("country").defaultValue;
                 document.getElementById("country").style.border = 'none';
@@ -143,6 +98,7 @@ window.onload = function() {
                 document.getElementById("city").defaultValue = newC;
                 document.getElementById("city").style.border = 'none';
                 document.getElementById("city").disabled = true;
+                document.getElementById("saveProfile").hidden = false;
             } else {
                 document.getElementById("city").value = document.getElementById("country").defaultValue;
                 document.getElementById("city").style.border = 'none';
@@ -151,33 +107,6 @@ window.onload = function() {
         } else {
             document.getElementById("city").style.border = 'none';
             document.getElementById("city").disabled = true;
-        }
-    };
-
-
-
-
-
-    document.getElementById("editB").onclick = function() {
-        document.getElementById('birthday').disabled = false;
-        document.getElementById('birthday').style.border = '1px solid blue';
-        document.getElementById('birthday').focus();
-    };
-    document.getElementById('birthday').onblur = function() {
-        var newB = document.getElementById('birthday').value;
-        if (newB != document.getElementById('birthday').defaultValue) {
-            if (window.confirm("Save birthday?")) {
-                document.getElementById('birthday').defaultValue = newB;
-                document.getElementById('birthday').style.border = 'none';
-                document.getElementById('birthday').disabled = true;
-            } else {
-                document.getElementById('birthday').value = document.getElementById('birthday').defaultValue;
-                document.getElementById('birthday').style.border = 'none';
-                document.getElementById('birthday').disabled = true;
-            }
-        } else {
-            document.getElementById('birthday').style.border = 'none';
-            document.getElementById('birthday').disabled = true;
         }
     };
 
@@ -193,6 +122,7 @@ window.onload = function() {
                 document.getElementById('gender').defaultValue = newG;
                 document.getElementById('gender').style.border = 'none';
                 document.getElementById('gender').disabled = true;
+                document.getElementById("saveProfile").hidden = false;
             } else {
                 document.getElementById('gender').value = document.getElementById('gender').defaultValue;
                 document.getElementById('gender').style.border = 'none';
@@ -216,6 +146,7 @@ window.onload = function() {
                 document.getElementById('about').defaultValue = newG;
                 document.getElementById('about').style.border = 'none';
                 document.getElementById('about').disabled = true;
+                document.getElementById("saveProfile").hidden = false;
             } else {
                 document.getElementById('about').value = document.getElementById('about').defaultValue;
                 document.getElementById('about').style.border = 'none';

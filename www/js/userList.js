@@ -1,53 +1,71 @@
 var userId = $.cookie('userId');
-var radius = $("[name = 'radius']").val();
+var otherUser;
 
-function radiusChange() {
-    radius = $("[name = 'radius']").val();
-    $("#users").html("");
 
-    var UserModel = Backbone.Model.extend();
-    var UserCollection = Backbone.Collection.extend({
-        url: 'http://chataround.ddns.net:8080/users' + '?' + $.param({username: userName, radius: radius}),
-        model: UserModel
-    });
 
-    var users = new UserCollection();
 
-    var updateFriendList = function (users) {
-        var $users = $("#users");
+var userlist= {
+    updateUsers: function(){
+        var radius =$("[name = 'radius']").val();
 
-        _.each(users, function (user) {
-            var currentUser = user.username;
-            if (currentUser != userName) {
-                var $user = $("<div>" + user.username + "</div>");
-                $users.append($user);
-            }
+        var UserModel = Backbone.Model.extend();
+        var UserCollection = Backbone.Collection.extend({
+            url: 'http://chataround.ddns.net:8080/users' + '?' + $.param({username: userName, radius: radius}),
+            model: UserModel
         });
-    };
+        var users= new UserCollection();
+        var updateCurrentUserList = function (users) {
+            var $users = $("#users");
+            var ul = document.getElementById("users");
+            var elementsLI = ul.getElementsByTagName("li");
 
-    users.fetch()
-        .then(updateFriendList);
-}
+            _.each(users, function (user) {
+                var isHere = 0;
+                for (var x = 0; x < elementsLI.length; ++x) {
+                    var dis = elementsLI[x].id;
+                    if (user.username == dis) {
+                        isHere = 1;
+                        break;
+                    }
 
-$("[name='save']").on("click", radiusChange);
+                }
+                if (isHere == 0 && user.username!=userName) {
+                    var $user = $("<li id='" + user.username + "'>" + user.username + "</li>");
+                    $users.append($user);
+                }
+               if(document.getElementById(dis).style.display = "none" && isHere == 1){
+                   document.getElementById(dis).style.display = "block";
+               }
+            });
 
-var UserModel = Backbone.Model.extend();
-var UserCollection = Backbone.Collection.extend({
-    url: 'http://chataround.ddns.net:8080/users' + '?' + $.param({username: userName, radius: radius}),
-    model: UserModel
-});
+            for (var x = 0; x < elementsLI.length; ++x) {
+                var dis = elementsLI[x].id;
+                var deleted = 0;
+                _.each(users, function (user) {
+                    if ( dis == user.username) {
+                        deleted = 1;
+                    }
+                });
+                if (deleted == 0) {
+                   document.getElementById(dis).style.display = "none";
+                    //$(dat).remove(); done alla anabwsbinei
+                   // document.getElementById(dis).style.visibility = "hidden"; // done alla opws eipa dessmeuei tn xwro
+                }
+            }
 
-var users = new UserCollection();
-var updateFriendList = function (users) {
-    var $users = $("#users");
-    _.each(users, function (user) {
-        var currentUser = user.username;
-        if (currentUser != userName) {
-            var $user = $("<div>" + user.username + "</div>");
-            $users.append($user);
-        }
+        };
+        users.fetch()
+            .then(updateCurrentUserList);
+    }};
+
+setInterval(function () {
+    userlist.updateUsers();
+}, 500);
+
+setInterval(function () {
+    $("#users li").click(function() {
+        otherUser = this.id;
+        localStorage.setItem("storageName", otherUser);
+        window.location.href = "otherProfile.html";
     });
-};
-
-users.fetch()
-    .then(updateFriendList);
+}, 500);

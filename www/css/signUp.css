@@ -75,16 +75,6 @@ input[type="password"]:focus {
     text-indent: 0;
     z-index: 1;
     color: #373737;
-    /*-webkit-transition-duration: 400ms;*/
-    /*-webkit-transition-property: width, background;*/
-    /*-webkit-transition-timing-function: ease;*/
-    /*-moz-transition-duration: 400ms;*/
-    /*-moz-transition-property: width, background;*/
-    /*-moz-transition-timing-function: ease;*/
-    /*-o-transition-duration: 400ms;*/
-    /*-o-transition-property: width, background;*/
-    /*-o-transition-timing-function: ease;*/
-    /*width: 380px;*/
     border-color:#ccc;
     box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
     opacity:0.6;
@@ -99,16 +89,6 @@ input[type="email"]:focus {
     text-indent: 0;
     z-index: 1;
     color: #373737;
-    /*-webkit-transition-duration: 400ms;*/
-    /*-webkit-transition-property: width, background;*/
-    /*-webkit-transition-timing-function: ease;*/
-    /*-moz-transition-duration: 400ms;*/
-    /*-moz-transition-property: width, background;*/
-    /*-moz-transition-timing-function: ease;*/
-    /*-o-transition-duration: 400ms;*/
-    /*-o-transition-property: width, background;*/
-    /*-o-transition-timing-function: ease;*/
-    /*width: 380px;*/
     border-color: #ccc;
     box-shadow: 0 0 5px rgba(4, 129, 177, 0.5);
     opacity: 0.6;
@@ -165,4 +145,19 @@ h2 {
 label {
     display: none;
     color: red;
+}
+select {
+    display: inline;
+    padding: 8px 6px;
+    height: 35px;
+    width:105px;
+}
+select:focus {
+    background:#f5fcfe;
+    text-indent: 0;
+    z-index: 1;
+    color: #373737;
+    border-color:#ccc;
+    box-shadow:0 0 5px rgba(4, 129, 177, 0.5);
+    opacity:0.6;
 }

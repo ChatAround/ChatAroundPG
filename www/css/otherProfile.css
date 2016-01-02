@@ -56,7 +56,7 @@ dt a {
     display: inline-block;
     width: 90px;
 }
-#Info input[type="text"], input[type="date"], textarea {
+#Info input[type="text"], textarea {
     display: inline;
     background-color: white;
     border: 0;
