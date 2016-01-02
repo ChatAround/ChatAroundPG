@@ -30,7 +30,7 @@ var userlist= {
 
                 }
                 if (isHere == 0 && user.username!=userName) {
-                    var $user = $("<li id='" + user.username + "' >" + user.username + "</li>");
+                    var $user = $("</l id='" + user.username + "'>" + user.username + "</li>");
                     $users.append($user);
                 }
                if(document.getElementById(dis).style.display = "none" && isHere == 1){
@@ -62,8 +62,10 @@ setInterval(function () {
     userlist.updateUsers();
 }, 500);
 
-$("#users li").click(function() {
-    otherUser = this.id;
-    localStorage.setItem("storageName", otherUser);
-    window.location.href = "otherProfile.html";
-});
+setInterval(function () {
+    $("#users li").click(function() {
+        otherUser = this.id;
+        localStorage.setItem("storageName", otherUser);
+        window.location.href = "otherProfile.html";
+    });
+}, 500);
