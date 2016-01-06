@@ -147,7 +147,7 @@ var sendRegisterInfo = function(e) {
                         .done(function (response) {
                             pMessage = response;
                             if (pMessage == "OK") {
-                                window.location.href = "main.html";
+                                window.location.href = "../index.html"
                             } else {
                                 window.alert(pMessage)
                             }

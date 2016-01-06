@@ -28,6 +28,7 @@
     <div id="users-wrapper">
         <p>Online Users</p>
         <div id="users" name="users"></div>
+
     </div>
 
     <div id="wrapper">
@@ -37,8 +38,9 @@
         </div>
         <div id="chatbox"><ul id="chatbox1"><li id="1"></li></ul></div>
         <form name="message">
-            <input type="text" id="usermsg" name="usermsg" size="63" />
-            <button type="button" name="sendMes">Send</button>
+            <input type="text" id="usermsg" name="usermsg" size="63"  onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('sendMes').click()" />
+            <button type="button" id="sendMes" name="sendMes">Send</button>
         </form>
     </div>
 
