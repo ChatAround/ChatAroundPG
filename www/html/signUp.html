@@ -15,23 +15,23 @@
             <fieldset>
                 <legend>Sign Up</legend>
                 <div>
-                    <input type="text" name="first_name" placeholder="First name *"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="first_name" placeholder="First name *" maxlength="16"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id="lfirst_name">You must enter your first name.</label>
                 </div>
                 <div>
-                    <input type="text" name="last_name" placeholder="Last name *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="last_name" maxlength="16" placeholder="Last name *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id="llast_name">You must enter your last name.</label>
                 </div>
                 <div>
-                    <input type="text" name="username" placeholder="Username *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" name="username" maxlength="16" placeholder="Username *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id="lusername">You must enter your username.</label>
                 </div>
                 <div>
-                    <input type="password" name="password" placeholder="Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" name="password" maxlength="16" placeholder="Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id="lpassword">You must enter a password.</label>
                 </div>
                 <div>
-                    <input type="password" name="confirm_pass" placeholder="Confirm Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="password" name="confirm_pass" maxlength="16" placeholder="Confirm Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <label id="lconfirm_pass">Passwords don't match.</label>
                 </div>
                 <div>
@@ -39,10 +39,10 @@
                     <input type="radio" name="gender" value="female">Female
                 </div>
                 <div>
-                    <input type="text" name="country" placeholder="Country">
+                    <input type="text" name="country" placeholder="Country" maxlength="16">
                 </div>
                 <div>
-                    <input type="text" name="city" placeholder="City">
+                    <input type="text" name="city" placeholder="City" maxlength="16">
                 </div>
                 <div id="birthday">
                     <select name="birthday_day" id="birthday_day">
@@ -58,7 +58,7 @@
                 </div>
                 <div>
                     <div class="small">Tell us a couple of things about yourself!</div>
-                    <textarea name="about" placeholder="Profile info"></textarea>
+                    <textarea name="about" placeholder="Profile info" maxlength="2000"></textarea>
                 </div>
                 <div>
                     <p>Fields with (*) are required.</p>
@@ -75,5 +75,6 @@
     <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
     <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
     <script src="../js/signUp.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 </html>

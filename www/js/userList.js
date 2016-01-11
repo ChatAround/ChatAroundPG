@@ -1,16 +1,15 @@
-var userId = $.cookie('userId');
+var userName = $.cookie('userName');
 var otherUser;
 
-
-
-
-var userlist= {
+var userList= {
     updateUsers: function(){
         var radius =$("[name = 'radius']").val();
 
         var UserModel = Backbone.Model.extend();
         var UserCollection = Backbone.Collection.extend({
-            url: 'http://chataround.ddns.net:8080/users' + '?' + $.param({username: userName, radius: radius}),
+            url: 'http://chataround.ddns.net:8080/users' + '?' + $.param({
+                username: userName,
+                radius: radius}),
             model: UserModel
         });
         var users= new UserCollection();
@@ -48,8 +47,6 @@ var userlist= {
                 });
                 if (deleted == 0) {
                    document.getElementById(dis).style.display = "none";
-                    //$(dat).remove(); done alla anabwsbinei
-                   // document.getElementById(dis).style.visibility = "hidden"; // done alla opws eipa dessmeuei tn xwro
                 }
             }
 
@@ -59,13 +56,13 @@ var userlist= {
     }};
 
 setInterval(function () {
-    userlist.updateUsers();
-}, 500);
 
-setInterval(function () {
+    userList.updateUsers();
+
     $("#users li").click(function() {
         otherUser = this.id;
         localStorage.setItem("storageName", otherUser);
         window.location.href = "otherProfile.html";
     });
+
 }, 500);

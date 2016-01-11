@@ -11,9 +11,9 @@
         <h1 id="welcome">Welcome to</h1>
         <h1 id="title">ChatAround</h1>
         <label>Username: </label>
-        <input type="text" name="username">
+        <input type="text" name="username" maxlength="16" autofocus>
         <label>Password: </label>
-        <input type="password" name="password">
+        <input type="password" name="password" onkeydown="enterKey(event)">
 
         <div id="lower">
             <button type="button" name="login">Login</button> <br>

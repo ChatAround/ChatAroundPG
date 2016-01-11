@@ -34,7 +34,6 @@ var sendMessage = function (e) {
 
     $.post("http://chataround.ddns.net:8080/message", messageInfo)
         .done(function (response) {
-            window.alert("the time u choose " + timeToSend);
             ClearFields();
         })
         .fail(function (error) {
@@ -49,3 +48,9 @@ function ClearFields() {
 }
 
 $("[name='sendMes']").on("click", sendMessage);
+
+function sendMess (e) {
+    if (13 === e.keyCode) {
+        sendMessage(e);
+    }
+}

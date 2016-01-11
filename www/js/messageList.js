@@ -1,4 +1,3 @@
-var userId = $.cookie('userId');
 var userName = $.cookie('userName');
 
 var MessageModel = Backbone.Model.extend({
@@ -46,8 +45,6 @@ var massage = {
                 });
                 if (deleted == 0) {
                     document.getElementById(dis).style.display = "none";
-                    //$(dat).remove(); done alla anabwsbinei
-                    //document.getElementById(dis).style.visibility = "hidden"; // done alla opws eipa dessmeuei tn xwro
                 }
             }
 

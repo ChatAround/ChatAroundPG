@@ -1,7 +1,3 @@
-/**
-    * @author Stratos
-*/
-
 var yearBox = document.getElementById('birthday_year');
 for (var i = 1950; i <= 2016; i++) {
     var yearOption = document.createElement('option');
@@ -38,44 +34,10 @@ for (var k = 10; k <= 31; k++) {
     dayBox.appendChild(dayOption);
 }
 
-
-var NS = {
-    currentLatitude: null,
-    currentLongitude: null
-};
 var userName = $.cookie('userName');
 var password = $.cookie('password');
 var uMessage;
 var pMessage;
-
-var Location = {
-    updateLocation: function () {
-        var updateCurrentLocation = function (position) {
-            NS.currentLatitude = position.coords.latitude;
-            NS.currentLongitude = position.coords.longitude;
-        };
-
-        var throwError = function (error) {
-            switch (error.code) {
-                case error.PERMISSION_DENIED:
-                    throw new Error("User denied the request for Geolocation.");
-                    break;
-                case error.POSITION_UNAVAILABLE:
-                    throw new Error("Location information is unavailable.");
-                    break;
-                case error.TIMEOUT:
-                    throw new Error("The request to get user location timed out.");
-                    break;
-            }
-        };
-
-        navigator.geolocation.getCurrentPosition(updateCurrentLocation, throwError);
-    }
-};
-
-setInterval(function () {
-    Location.updateLocation();
-}, 500);
 
 var sendRegisterInfo = function(e) {
     e.preventDefault();
@@ -94,11 +56,9 @@ var sendRegisterInfo = function(e) {
     var birthday_day = $("[name='birthday_day']");
     var birthday = birthyear.val() + '/' + birthmonth.val() + '/' + birthday_day.val();
     var about = $("[name='about']").val();
-    var latitude = NS.currentLatitude;
-    var longitude = NS.currentLongitude;
+    var latitude = $.cookie('latitude');
+    var longitude = $.cookie('longitude');
     var isOnline = true;
-    $.cookie('userName', username);
-    $.cookie('password', password);
 
     var userData = {
         username: username,
@@ -147,7 +107,7 @@ var sendRegisterInfo = function(e) {
                         .done(function (response) {
                             pMessage = response;
                             if (pMessage == "OK") {
-                                window.location.href = "main.html";
+                                window.location.href = "../index.html";
                             } else {
                                 window.alert(pMessage)
                             }
@@ -163,8 +123,6 @@ var sendRegisterInfo = function(e) {
                 console.log(error);
             });
     }
-
-
 };
 
 function hideFNLabel() {
@@ -185,6 +143,7 @@ function hidePCLabel() {
 function hideBDLabel() {
     document.getElementById("lbirthday").style.display = "none";
 }
+
 
 
 $("[name='first_name']").on("click", hideFNLabel);
