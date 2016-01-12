@@ -61,7 +61,7 @@ var userName = $.cookie('userName');
 
 
 //edit profile
-window.onload = function() {
+//window.onload = function() {
     document.getElementById("editCo").onclick = function() {
         document.getElementById("country").disabled = false;
         document.getElementById("country").style.background = 'white';
@@ -145,6 +145,8 @@ window.onload = function() {
             document.getElementById("about").style.background = 'rgba(50, 23, 77, 0)';
         }
     };
-};
+//};
+
+
 
 $("[name='saveProfile']").on('click', updateProfile);

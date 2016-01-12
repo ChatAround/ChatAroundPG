@@ -80,7 +80,7 @@ a:hover {
     z-index: 1;
     height: 0;
     width: 180px;
-    padding-top: 41px;
+    padding-top: 20%;
     -webkit-transition: height .5s ease;
     -webkit-transition-delay: .4s;
     border-radius: 1px;

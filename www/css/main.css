@@ -98,6 +98,8 @@ a:hover {
 }
 /* Chat User Area */
 #users{
+    overflow: auto;
+    overflow-x: hidden;
     float: left;
     left: 12%;
     background: rgba(50, 23, 77, 0.4);
@@ -154,7 +156,7 @@ a:hover {
     text-shadow:1px 1px 0 #E4E4E4;
     padding:0 5px;
     margin-right:5px;
-    width: 84%;
+    width: 83%;
     outline:none;
 }
 #submitForm{
