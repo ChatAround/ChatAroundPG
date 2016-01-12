@@ -30,7 +30,7 @@ var massage = {
                     }
                 }
                 if (isHere == 0) {
-                    var $message = $("<li id='" + message.id + "' >" + message.username + " : " + message.content + "</li>");
+                    var $message = $("<li class='chat' id='" + message.id + "' >" + "<span class='author'>" + message.username + "</span> <span class='text'>" + message.content + "</span></li>");
                     $messages.append($message);
                 }
             });

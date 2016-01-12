@@ -29,7 +29,7 @@ var userList= {
 
                 }
                 if (isHere == 0 && user.username!=userName) {
-                    var $user = $("<li id='" + user.username + "'>" + user.username + "</li>");
+                    var $user = $("<li id='" + user.username + "' class='user'><span class='username'>" + user.username + "</span></li>");
                     $users.append($user);
                 }
                if(document.getElementById(dis).style.display = "none" && isHere == 1){

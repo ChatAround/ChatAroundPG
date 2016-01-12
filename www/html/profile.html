@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/profile.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
 </head>
 <body>
 
     <dl>
-        <dt id="header"><label id="header-title"><a href="main.html">ChatAround</a></label></dt>
-        <dl class="dropdown" style="float:right;list-style-type:none;">
-        </dl>
+        <dt id="header"><label id="header-title"><a href="main.html"> <img src="../img/img/logo.gif" width="200" height="50"> </a></label></dt>
+        <dl class="dropdown" style="float:right;list-style-type:none;"></dl>
     </dl>
 
     <div id="dp">
         <div class="wrapper">
             <div class="content">
                 <dl>
+                    <button id="showProfile">My profile</button> <br>
+                    <button id="settingsBtn">Settings</button> <br>
                     <button id="logout" type="button" name="logout">Logout</button>
                 </dl>
             </div>
@@ -24,57 +26,72 @@
         </div>
     </div>
 
-    <div id="ProfilePage">
-        <div id="LeftCol">
-            <div id="Photo">  </div>
-        </div>
+    <div id="container">
+        <div id="ProfilePage">
+            <div id="LeftCol">
+                <div id="Photo"> <img src="http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?size=200"> </div>
+            </div>
 
-        <div id="Info">
-            <p>
-                <strong>First Name:</strong>
-                <input type="text" id="firstname" value="" disabled/>
-            </p>
-            <p>
-                <strong>Last Name:</strong>
-                <input type="text" id="lastname" value="" disabled/>
-            </p>
-            <p>
-                <strong>Username:</strong>
-                <input type="text" id="prof_user" value="" disabled/>
-            </p>
-            <p>
-                <strong>Country:</strong>
-                <input type="text" id="country" value="" disabled/>
-                <input type="image" id="editCo" src="../img/edit.png" width="15" height="15">
-            </p>
-            <p>
-                <strong>City:</strong>
-                <input type="text" id="city" value="" disabled/>
-                <input type="image" id="editCi" src="../img/edit.png" width="15" height="15">
-            </p>
+            <div id="Info">
+                <p>
+                    <strong>First Name:</strong>
+                    <input type="text" id="firstname" value="" disabled/>
+                </p>
+                <p>
+                    <strong>Last Name:</strong>
+                    <input type="text" id="lastname" value="" disabled/>
+                </p>
+                <p>
+                    <strong>Username:</strong>
+                    <input type="text" id="prof_user" value="" disabled/>
+                </p>
+                <p>
+                    <strong>Country:</strong>
+                    <input type="text" id="country" value="" disabled/>
+                    <input type="image" id="editCo" src="../img/edit.png" width="15" height="15">
+                </p>
+                <p>
+                    <strong>City:</strong>
+                    <input type="text" id="city" value="" disabled/>
+                    <input type="image" id="editCi" src="../img/edit.png" width="15" height="15">
+                </p>
 
-            <p>
-                <strong>Birthday:</strong>
-                <input type="text" id="birthday" value=""  disabled/>
-            </p>
-            <p>
-                <strong>Gender:</strong>
-                <select id="gender" disabled>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-                <input type="image" id="editG" src="../img/edit.png" width="15" height="15">
-            </p>
-            <p>
-                <strong>About:</strong>
-                <textarea id="about" placeholder="" disabled></textarea>
-                <input type="image" id="editAbout" src="../img/edit.png" width="15" height="15">
-            </p>
-            <p>
-                <button type="button" name="saveProfile" id="saveProfile" hidden>Save</button>
-            </p>
+                <p>
+                    <strong>Birthday:</strong>
+                    <input type="text" id="birthday" value=""  disabled/>
+                </p>
+                <p>
+                    <strong>Gender:</strong>
+                    <input type="text" id="gender" value="" disabled />
+                </p>
+                <p>
+                    <strong>About:</strong>
+                    <textarea id="about" placeholder="" disabled></textarea>
+                    <input type="image" id="editAbout" src="../img/edit.png" width="15" height="15">
+                </p>
+                <p>
+                    <button type="button" name="saveProfile" id="saveProfile" class="blueButton">Save</button>
+                </p>
+            </div>
+            <div style="clear:both"></div>
         </div>
-        <div style="clear:both"></div>
+    </div>
+
+    <div id="overlay"></div>
+    <div id="popup">
+        <label id="settingsTitle">Settings</label> <br> <br>
+        <label>Radius:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="radius" name="radius" type="text" value= 1000> <br> <br>
+        <label>Message timer: </label>
+        <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;
+        <select name="duration" id="duration">
+            <option value="0">Minutes</option>
+            <option value="1">Hours</option>
+            <option value="2">Days</option>
+            <option value="3">For Ever And Ever</option>
+        </select> <br> <br>
+        <button id="save" name="save" class="blueButton">Save</button>
+        <button id="closeBtn" class="blueButton">Close</button>
     </div>
 
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -84,6 +101,7 @@
     <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
     <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
     <script src="../js/profile.js"></script>
+    <script src="../js/popup.js"></script>
     <script src="../js/index.js"></script>
 </body>
 </html>

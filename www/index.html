@@ -2,13 +2,14 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="stylesheet" type="text/css" href="css/page.css"/>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <title>Chat Around</title>
 </head>
 <body >
 
     <div id="container">
-        <h1 id="welcome">Welcome to</h1>
+        <h1 id="welcome">Welcome to</h1> <br>
         <h1 id="title">ChatAround</h1>
         <label>Username: </label>
         <input type="text" name="username" maxlength="16" autofocus>
@@ -16,8 +17,8 @@
         <input type="password" name="password" onkeydown="enterKey(event)">
 
         <div id="lower">
-            <button type="button" name="login">Login</button> <br>
-            <label id="register">You do not have a ChatAround account? <a href="html/signUp.html">Register now!</a></label>
+            <button id="login" type="button" name="login" class="blueButton">Login</button> <br>
+            <label id="register">You do not have a ChatAround account? <a id="regbtn" href="html/signUp.html">Register now!</a></label>
             <br/>
         </div>
     </div>

@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/signUp.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
 </head>
 <body>
-
-<h2>Welcome to</h2>
-<h1>ChatAround</h1>
 
     <div id="wrapper">
         <form name="suform">
@@ -35,7 +33,7 @@
                     <label id="lconfirm_pass">Passwords don't match.</label>
                 </div>
                 <div>
-                    <input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" class="gender" value="male">Male
                     <input type="radio" name="gender" value="female">Female
                 </div>
                 <div>
@@ -56,6 +54,7 @@
                     </select>
                     <label id="lbirthday">Insert a valid date.</label>
                 </div>
+                <br>
                 <div>
                     <div class="small">Tell us a couple of things about yourself!</div>
                     <textarea name="about" placeholder="Profile info" maxlength="2000"></textarea>
@@ -63,7 +62,7 @@
                 <div>
                     <p>Fields with (*) are required.</p>
                 </div>
-                <input type="button" id="register" name="register" value="Register"/>
+                <input type="button" id="register" class="blueButton" name="register" value="Register"/>
             </fieldset>
         </form>
     </div>
