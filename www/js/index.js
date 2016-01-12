@@ -90,6 +90,7 @@ var sendLogoutInfo = function(e) {
     var latitude = $.cookie('latitude');
     var longitude = $.cookie('longitude');
     var isOnline = false;
+    $.cookie('isOnline', isOnline);
 
     $.ajax({
             type: 'PUT',
