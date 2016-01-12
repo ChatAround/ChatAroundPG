@@ -4,72 +4,74 @@
 <head>
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/verticalSettings.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
 </head>
 <body>
 
-    <dl>
-        <dt id="header"><label id="header-title">ChatAround</label></dt>
-    </dl>
+<dl>
+    <dt id="header"><label id="header-title"><img src="../img/logo.png" width="200" height="50"> </label></dt>
+</dl>
 
-    <div id="dp">
-        <div class="wrapper">
-            <div class="content">
-                <dl>
-                    <button id="showProfile">My profile</button> <br>
-                    <button id="settingsBtn">Settings</button> <br>
-                    <button id="logout" type="button" name="logout">Logout</button>
-                </dl>
-            </div>
-            <div class="parent"><a class="user" href="#"><span id="userName"></span></a></div>
+<div id="dp">
+    <div class="wrapper">
+        <div class="content">
+            <dl>
+                <button id="showProfile">My profile</button> <br>
+                <button id="settingsBtn">Settings</button> <br>
+                <button id="logout" type="button" name="logout">Logout</button>
+            </dl>
         </div>
+        <div class="parent"><a class="user" href="#"><span id="userName"></span></a></div>
+    </div>
+</div>
+
+<div id="container">
+    <ul id="users"></ul>
+
+    <div id="chatbox">
+    <ul id="chatbox1"></ul>
+
+
+    <form id="chatBottomBar" class="rounded">
+    <div class="tip"></div>
+
+    <div id="submitForm" name="message">
+        <input type="text" id="usermsg" name="usermsg" class="rounded" maxlength="255" />
+        <button name="sendMes" class="blueButton">Send</button>
     </div>
 
-    <div id="users-wrapper">
-        <p>Online Users</p>
-        <div id="users" name="users"></div>
-    </div>
+    </form>
 
-    <div id="wrapper">
-        <div id="menu">
-            <div id="currentUsers"></div>
-            <div style="clear:both"></div>
-        </div>
-        <div id="chatbox"><ul id="chatbox1"><li id="1"></li></ul></div>
-        <form name="message">
-            <input type="text" id="usermsg" name="usermsg" size="63" />
-            <button type="button" name="sendMes">Send</button>
-        </form>
     </div>
+</div>
+<div id="overlay"></div>
+<div id="popup">
+    <label id="settingsTitle">Settings</label> <br> <br>
+    <label>Radius:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="radius" name="radius" type="text" value= 1000> <br> <br>
+    <label>Message timer: </label>
+    <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;
+    <select name="duration" id="duration">
+        <option value="0">Minutes</option>
+        <option value="1">Hours</option>
+        <option value="2">Days</option>
+        <option value="3">For Ever And Ever</option>
+    </select> <br> <br>
+    <button id="save" name="save" class="blueButton">Save</button>
+    <button id="closeBtn" class="blueButton">Close</button>
+</div>
 
-    <div id="overlay"></div>
-    <div id="popup">
-        <br> <br>
-        <label>Radius: </label>
-        <input id="radius" name="radius" type="text" value= 1000> <br> <br>
-        <label>Message timer: </label>
-        <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;&nbsp;
-        <select name="duration" id="duration">
-            <option value="0">Minutes</option>
-            <option value="1">Hours</option>
-            <option value="2">Days</option>
-            <option value="3">For Ever And Ever</option>
-        </select> <br> <br> <br> <br>
-        <button name="save">Save</button>
-        <button id="closeBtn">Close</button>
-    </div>
-
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/underscore/underscore.js"></script>
-    <script src="../bower_components/backbone/backbone.js"></script>
-    <script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
-    <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
-    <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-    <script src="../js/messageList.js"></script>
-    <script src="../js/userList.js"></script>
-    <script src="../js/index.js"></script>
-    <script src="../js/message.js" ></script>
-    <script src="../js/popup.js"></script>
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/backbone/backbone.js"></script>
+<script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
+<script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
+<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
+<script src="../js/messageList.js"></script>
+<script src="../js/userList.js"></script>
+<script src="../js/index.js"></script>
+<script src="../js/message.js" ></script>
+<script src="../js/popup.js"></script>
 
 </body>
 </html>

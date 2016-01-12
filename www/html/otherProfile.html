@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Chat Around</title>
     <link rel="stylesheet" type="text/css" href="../css/otherProfile.css">
+    <link rel="stylesheet" type="text/css" href="../css/page.css">
 </head>
 <body>
 
 <dl>
-    <dt id="header"><label id="header-title"><a href="main.html">ChatAround</a></label></dt>
+    <dt id="header"><label id="header-title"><img src="../img/logo.png" width="200" height="50"> </label></dt>
     <dl class="dropdown" style="float:right;list-style-type:none;">
     </dl>
 </dl>
@@ -23,56 +24,57 @@
         <div class="parent"><a class="user" href="#"><span id="userName"></span></a></div>
     </div>
 </div>
+<div id="container">
+    <div id="ProfilePage">
+        <div id="LeftCol">
+            <div id="Photo"> <img src="http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?size=200"> </div>
+        </div>
 
-<div id="ProfilePage">
-    <div id="LeftCol">
-        <div id="Photo"></div>
+        <div id="Info">
+            <p>
+                <strong>First Name:</strong>
+                <input type="text" id="other_firstname" value="" disabled/>
+            </p>
+            <p>
+                <strong>Last Name:</strong>
+                <input type="text" id="other_lastname" value="" disabled/>
+            </p>
+            <p>
+                <strong>Username:</strong>
+                <input type="text" id="other_prof_user" value="" disabled/>
+            </p>
+            <p>
+                <strong>Country:</strong>
+                <input type="text" id="other_country" value="" disabled/>
+            </p>
+            <p>
+                <strong>City:</strong>
+                <input type="text" id="other_city" value="" disabled/>
+            </p>
+
+            <p>
+                <strong>Birthday:</strong>
+                <input type="text" id="other_birthday" value=""  disabled/>
+            </p>
+            <p>
+                <strong>Gender:</strong>
+                <input type="text" id="other_gender" value="" disabled />
+            </p>
+            <p>
+                <strong>About:</strong>
+                <textarea id="other_about" placeholder="" disabled></textarea>
+            </p>
+        </div>
+        <div style="clear:both"></div>
     </div>
-
-    <div id="Info">
-        <p>
-            <strong>First Name:</strong>
-            <input type="text" id="other_firstname" value="" disabled/>
-        </p>
-        <p>
-            <strong>Last Name:</strong>
-            <input type="text" id="other_lastname" value="" disabled/>
-        </p>
-        <p>
-            <strong>Username:</strong>
-            <input type="text" id="other_prof_user" value="" disabled/>
-        </p>
-        <p>
-            <strong>Country:</strong>
-            <input type="text" id="other_country" value="" disabled/>
-        </p>
-        <p>
-            <strong>City:</strong>
-            <input type="text" id="other_city" value="" disabled/>
-        </p>
-
-        <p>
-            <strong>Birthday:</strong>
-            <input type="text" id="other_birthday" value=""  disabled/>
-        </p>
-        <p>
-            <strong>Gender:</strong>
-            <input type="text" id="other_gender" value="" disabled />
-        </p>
-        <p>
-            <strong>About:</strong>
-            <textarea id="other_about" placeholder="" disabled></textarea>
-        </p>
-    </div>
-    <div style="clear:both"></div>
 </div>
 
-<script src="../bower_components/jquery/dist/jquery.js"></script>
-<script src="../bower_components/underscore/underscore.js"></script>
-<script src="../bower_components/backbone/backbone.js"></script>
-<script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
-<script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
-<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="../js/otherProfile.js"></script>
+<!--<script src="../bower_components/jquery/dist/jquery.js"></script>-->
+<!--<script src="../bower_components/underscore/underscore.js"></script>-->
+<!--<script src="../bower_components/backbone/backbone.js"></script>-->
+<!--<script src="../bower_components/sockjs-client/dist/sockjs.js"></script>-->
+<!--<script src="../bower_components/stomp-websocket/lib/stomp.js"></script>-->
+<!--<script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>-->
+<!--<script src="../js/otherProfile.js"></script>-->
 </body>
 </html>
