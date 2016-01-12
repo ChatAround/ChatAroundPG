@@ -4,7 +4,7 @@
 }
 body {
     color: black;
-    background: url('../img/wannabe-background2.png')  no-repeat;
+    background: url('../img/img/backgrond.jpg') no-repeat;
     background-size: cover;
 
 }
@@ -14,7 +14,7 @@ dl {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background:url("../img/bar_line_bg.jpg")repeat-x ;
+    background:url("../img/img/bar_img.jpg")repeat ;
 }
 dt {
     float: left;
@@ -80,7 +80,7 @@ a:hover {
     z-index: 1;
     height: 0;
     width: 180px;
-    padding-top: 40px;
+    padding-top: 41px;
     -webkit-transition: height .5s ease;
     -webkit-transition-delay: .4s;
     border-radius: 1px;
