@@ -101,23 +101,25 @@ var sendRegisterInfo = function(e) {
     } else {
         $.post("http://chataround.ddns.net:8080/user", userData)
             .done(function (response) {
-                uMessage = response;
-                if (uMessage == "OK") {
                     $.post("http://chataround.ddns.net:8080/userProfile", profileData)
                         .done(function (response) {
-                            pMessage = response;
-                            if (pMessage == "OK") {
-                                window.location.href = "../index.html";
-                            } else {
-                                window.alert(pMessage)
-                            }
+                            window.location.href = "../index.html";
+                            console.log(response);
                         })
                         .fail(function (error) {
                             console.log(error);
+                            switch (error.status) {
+                                case 400:
+                                    window.alert("You didn't gave us your location.. we can't let you in :(");
+                                    break;
+                                case 500:
+                                    window.alert("Server Error");
+                                    break;
+                                case 409:
+                                    window.alert("This username already in use");
+                                    break;
+                            }
                         });
-                } else {
-                    window.alert(uMessage)
-                }
             })
             .fail(function (error) {
                 console.log(error);
@@ -128,7 +130,7 @@ var sendRegisterInfo = function(e) {
                     case 500:
                         window.alert("Server Error");
                         break;
-                    case 226:
+                    case 409:
                         window.alert("This username already in use");
                         break;
                 }

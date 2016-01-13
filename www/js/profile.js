@@ -37,7 +37,11 @@ var userName = $.cookie('userName');
     };
 
     UserProfile.fetch()
-        .then(getProfile);
+        .then(getProfile)
+        .fail(function(error) {
+            window.alert("You are not Logged in !!");
+            window.location.href = "../index.html";
+        });
 
     var updateProfile = function() {
         var username = document.getElementById("prof_user").value;

@@ -35,5 +35,9 @@ var getOtherProfile = function(otherProfile) {
 };
 
 otherProfile.fetch()
-.then(getOtherProfile);
+.then(getOtherProfile)
+    .fail(function(error) {
+    window.alert("You are not Logged in !!");
+    window.location.href = "../index.html";
+    });
 

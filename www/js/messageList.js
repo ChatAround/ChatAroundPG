@@ -51,10 +51,10 @@ var massage = {
         messages.fetch()
             .then(updateCurrentMessageList)
             .fail(function(error) {
-            window.location.href = "../index.html";
+                window.alert("You are not Logged in !!");
+                window.location.href = "../index.html";
+
             });
-
-
     }};
 
 setInterval(function () {
