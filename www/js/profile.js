@@ -63,6 +63,7 @@ var userName = $.cookie('userName');
 //edit profile
 //window.onload = function() {
     document.getElementById("editCo").onclick = function() {
+        document.getElementById("coMinLetters").style.display = "none";
         document.getElementById("country").disabled = false;
         document.getElementById("country").style.background = 'white';
         document.getElementById("country").style.border = '1px solid #32174d';
@@ -70,27 +71,35 @@ var userName = $.cookie('userName');
     };
     document.getElementById("country").onblur = function() {
         var newCo = document.getElementById("country").value;
-        if (newCo != document.getElementById("country").defaultValue) {
-            if (window.confirm("Save country?")) {
-                document.getElementById("country").defaultValue = newCo;
-                document.getElementById("country").style.border = 'none';
-                document.getElementById("country").disabled = true;
-                document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
-                document.getElementById("saveProfile").style.display = 'block';
+        if (newCo.length >= 4) {
+            if (newCo != document.getElementById("country").defaultValue) {
+                if (window.confirm("Save country?")) {
+                    document.getElementById("country").defaultValue = newCo;
+                    document.getElementById("country").style.border = 'none';
+                    document.getElementById("coMinLetters").style.display = 'none';
+                    document.getElementById("country").disabled = true;
+                    document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
+                    document.getElementById("saveProfile").style.display = 'block';
+                } else {
+                    document.getElementById("country").value = document.getElementById("country").defaultValue;
+                    document.getElementById("country").style.border = 'none';
+                    document.getElementById("coMinLetters").style.display = 'none';
+                    document.getElementById("country").disabled = true;
+                    document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
+                }
             } else {
-                document.getElementById("country").value = document.getElementById("country").defaultValue;
                 document.getElementById("country").style.border = 'none';
+                document.getElementById("coMinLetters").style.display = 'none';
                 document.getElementById("country").disabled = true;
                 document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
             }
         } else {
-            document.getElementById("country").style.border = 'none';
-            document.getElementById("country").disabled = true;
-            document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
+            document.getElementById("coMinLetters").style.display = "block";
         }
     };
 
     document.getElementById("editCi").onclick = function() {
+        document.getElementById("ciMinLetters").style.display = "none";
         document.getElementById("city").disabled = false;
         document.getElementById("city").style.background = 'white';
         document.getElementById("city").style.border = '1px solid #32174d';
@@ -98,23 +107,30 @@ var userName = $.cookie('userName');
     };
     document.getElementById("city").onblur = function() {
         var newCi = document.getElementById("city").value;
-        if (newCi != document.getElementById("city").defaultValue) {
-            if (window.confirm("Save city?")) {
-                document.getElementById("city").defaultValue = newCi;
-                document.getElementById("city").style.border = 'none';
-                document.getElementById("city").disabled = true;
-                document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
-                document.getElementById("saveProfile").style.display = 'block';
+        if (newCi.length >= 4) {
+            if (newCi != document.getElementById("city").defaultValue) {
+                if (window.confirm("Save city?")) {
+                    document.getElementById("city").defaultValue = newCi;
+                    document.getElementById("city").style.border = 'none';
+                    document.getElementById("ciMinLetters").style.display = 'none';
+                    document.getElementById("city").disabled = true;
+                    document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
+                    document.getElementById("saveProfile").style.display = 'block';
+                } else {
+                    document.getElementById("city").value = document.getElementById("country").defaultValue;
+                    document.getElementById("city").style.border = 'none';
+                    document.getElementById("ciMinLetters").style.display = 'none';
+                    document.getElementById("city").disabled = true;
+                    document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
+                }
             } else {
-                document.getElementById("city").value = document.getElementById("city").defaultValue;
                 document.getElementById("city").style.border = 'none';
+                document.getElementById("ciMinLetters").style.display = 'none';
                 document.getElementById("city").disabled = true;
                 document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
             }
         } else {
-            document.getElementById("city").style.border = 'none';
-            document.getElementById("city").disabled = true;
-            document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
+            document.getElementById("ciMinLetters").style.display = "block";
         }
     };
 

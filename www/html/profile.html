@@ -9,8 +9,7 @@
 <body>
 
     <dl>
-        <dt id="header"><label id="header-title"><a href="main.html"> <img src="../img/img/logo.gif" width="200" height="50"> </a></label></dt>
-        <dl class="dropdown" style="float:right;list-style-type:none;"></dl>
+        <dt id="header"><label id="header-title"><img src="../img/img/logo.gif" width="200" height="50"> </label></dt>
     </dl>
 
     <div id="dp">
@@ -47,13 +46,15 @@
                 </p>
                 <p>
                     <strong>Country:</strong>
-                    <input type="text" id="country" value="" disabled/>
-                    <input type="image" id="editCo" src="../img/edit.png" width="15" height="15">
+                    <input type="text" id="country" value="" maxlength="16" disabled/>
+                    <input type="image" class="edit" id="editCo" src="../img/edit.png" width="15" height="15">
+                    <label class="labelError" id="coMinLetters">Minimum characters 4-16.</label>
                 </p>
                 <p>
                     <strong>City:</strong>
-                    <input type="text" id="city" value="" disabled/>
-                    <input type="image" id="editCi" src="../img/edit.png" width="15" height="15">
+                    <input type="text" id="city" value="" maxlength="16" disabled/>
+                    <input type="image" class="edit" id="editCi" src="../img/edit.png" width="15" height="15">
+                    <label class="labelError" id="ciMinLetters">Minimum characters 4-16.</label>
                 </p>
 
                 <p>
@@ -66,8 +67,8 @@
                 </p>
                 <p>
                     <strong>About:</strong>
-                    <textarea id="about" placeholder="" disabled></textarea>
-                    <input type="image" id="editAbout" src="../img/edit.png" width="15" height="15">
+                    <textarea id="about" placeholder="" maxlength="2000" disabled></textarea>
+                    <input type="image" id="editAbout" class="edit" src="../img/edit.png" width="15" height="15">
                 </p>
                 <p>
                     <button type="button" name="saveProfile" id="saveProfile" class="blueButton">Save</button>
@@ -81,9 +82,9 @@
     <div id="popup">
         <label id="settingsTitle">Settings</label> <br> <br>
         <label>Radius:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input id="radius" name="radius" type="text" value= 1000> <br> <br>
+        <input id="radius" name="radius" type="text" value= 1000 onkeypress="return isNumber(event)"> <br> <br>
         <label>Message timer: </label>
-        <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;
+        <input type="text" id="selectedTime" name="selectedTime" value="1" onkeypress="return isNumber(event)"> &nbsp;&nbsp;
         <select name="duration" id="duration">
             <option value="0">Minutes</option>
             <option value="1">Hours</option>

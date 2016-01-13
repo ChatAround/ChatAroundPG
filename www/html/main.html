@@ -29,27 +29,27 @@
     <ul id="users"></ul>
 
     <div id="chatbox">
-    <ul id="chatbox1"></ul>
+        <ul id="chatbox1"></ul>
 
 
-    <form id="chatBottomBar" class="rounded">
-    <div class="tip"></div>
+        <form id="chatBottomBar" class="rounded">
+            <div class="tip"></div>
 
-    <div id="submitForm" name="message">
-        <input type="text" id="usermsg" name="usermsg" class="rounded" size="63" maxlength="150" onkeydown="sendMess(event)" autofocus />
-        <button name="sendMes" class="blueButton">Send</button>
+            <div id="submitForm" name="message">
+                <input type="text" id="usermsg" name="usermsg" class="rounded" size="63" maxlength="150" onkeydown="sendMess(event)" autofocus />
+                <button name="sendMes" class="blueButton">Send</button>
+            </div>
+        </form>
     </div>
-    </form>
-    </div>
-    </div>
+</div>
 
 <div id="overlay"></div>
 <div id="popup">
     <label id="settingsTitle">Settings</label> <br> <br>
     <label>Radius:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="radius" name="radius" type="text" value= 1000> <br> <br>
+    <input id="radius" name="radius" type="text" value= 1000 onkeypress="return isNumber(event)"> <br> <br>
     <label>Message timer: </label>
-    <input type="text" id="selectedTime" name="selectedTime" value="1"> &nbsp;&nbsp;
+    <input type="text" id="selectedTime" name="selectedTime" value="1" onkeypress="return isNumber(event)"> &nbsp;&nbsp;
     <select name="duration" id="duration">
         <option value="0">Minutes</option>
         <option value="1">Hours</option>
@@ -65,9 +65,9 @@
 <script src="../bower_components/sockjs-client/dist/sockjs.js"></script>
 <script src="../bower_components/stomp-websocket/lib/stomp.js"></script>
 <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-<script src="../js/messageList.js"></script>
-<script src="../js/userList.js"></script>
-<script src="../js/index.js"></script>
+<!--<script src="../js/messageList.js"></script>-->
+<!--<script src="../js/userList.js"></script>-->
+<!--<script src="../js/index.js"></script>-->
 <script src="../js/message.js" ></script>
 <script src="../js/popup.js"></script>
 

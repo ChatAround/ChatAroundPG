@@ -39,6 +39,8 @@ var password = $.cookie('password');
 var uMessage;
 var pMessage;
 
+
+
 var sendRegisterInfo = function(e) {
     e.preventDefault();
 
@@ -48,7 +50,8 @@ var sendRegisterInfo = function(e) {
     var username = $("[name='username']").val();
     var password = $("[name='password']").val();
     var confirmPass = $("[name='confirm_pass']").val();
-    var gender = $("[name='gender']").val();
+    var gender = $("[name='gender']");
+    var genderValue;
     var country = $("[name='country']").val();
     var city = $("[name='city']").val();
     var birthyear = $("[name='birthday_year']");
@@ -59,6 +62,15 @@ var sendRegisterInfo = function(e) {
     var latitude = $.cookie('latitude');
     var longitude = $.cookie('longitude');
     var isOnline = true;
+
+    var radioValid = false;
+    var gv = 0;
+
+    while (!radioValid && gv < gender.length) {
+        if (gender[gv].checked) radioValid = true;
+        genderValue = gender[gv].value;
+        gv++;
+    }
 
     var userData = {
         username: username,
@@ -72,27 +84,38 @@ var sendRegisterInfo = function(e) {
         username: username,
         firstName: firstName,
         surName: lastName,
-        gender: gender,
+        gender: genderValue,
         country: country,
         city: city,
         birthday: birthday,
         about: about
     };
 
+
     if (firstName == "") {
         document.getElementById("lfirst_name").style.display = "inline";
+    } else if (firstName.length < 4) {
+        document.getElementById("fnMinLetters").style.display = "inline";
     } else if (lastName == "") {
         document.getElementById("llast_name").style.display = "inline";
+    } else if (lastName.length < 4) {
+        document.getElementById("lnMinLetters").style.display = "inline";
     } else if (username == "") {
         document.getElementById("lusername").style.display = "inline";
+    } else if (username.length < 4) {
+        document.getElementById("uMinLetters").style.display = "inline";
     } else if (password == "" || confirmPass == "") {
         document.getElementById("lpassword").style.display = "inline";
         document.suform.password.value = "";
         document.suform.confirm_pass.value = "";
+    } else if (password.length < 4) {
+        document.getElementById("pMinLetters").style.display = "inline";
     } else if (password != confirmPass) {
         document.getElementById("lconfirm_pass").style.display = "inline";
         document.suform.confirm_pass.value = "";
-    } else if (birthyear.val() == "0") {
+    } else if (!radioValid) {
+        document.getElementById("lgender").style.display = "inline";
+    }else if (birthyear.val() == "0") {
         document.getElementById("lbirthday").style.display = "inline";
     } else if (birthmonth.val() == "0") {
         document.getElementById("lbirthday").style.display = "inline";
@@ -127,15 +150,19 @@ var sendRegisterInfo = function(e) {
 
 function hideFNLabel() {
     document.getElementById("lfirst_name").style.display = "none";
+    document.getElementById("fnMinLetters").style.display = "none";
 }
 function hideLNLabel() {
     document.getElementById("llast_name").style.display = "none";
+    document.getElementById("lnMinLetters").style.display = "none";
 }
 function hideUNLabel() {
     document.getElementById("lusername").style.display = "none";
+    document.getElementById("uMinLetters").style.display = "none";
 }
 function hidePLabel() {
     document.getElementById("lpassword").style.display = "none";
+    document.getElementById("pMinLetters").style.display = "none";
 }
 function hidePCLabel() {
     document.getElementById("lconfirm_pass").style.display = "none";
@@ -143,7 +170,18 @@ function hidePCLabel() {
 function hideBDLabel() {
     document.getElementById("lbirthday").style.display = "none";
 }
+function hideGenLabel() {
+    document.getElementById("lgender").style.display = "none";
+}
 
+function isAlphabet(evt) {
+    evt = (evt) ? evt : window.event;
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if ((charCode > 47 && charCode < 58) && (charCode != 32)) {
+        return false;
+    }
+    return true;
+}
 
 
 $("[name='first_name']").on("click", hideFNLabel);
@@ -154,5 +192,6 @@ $("[name='confirm_pass']").on("click", hidePCLabel);
 $("[name='birthday_year']").on("click", hideBDLabel);
 $("[name='birthday_month']").on("click", hideBDLabel);
 $("[name='birthday_day']").on("click", hideBDLabel);
+$("[name='gender']").on("click", hideGenLabel);
 
 $("[name='register']").on("click", sendRegisterInfo);

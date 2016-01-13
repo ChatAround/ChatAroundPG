@@ -72,3 +72,7 @@ textarea {
     display: none;
     margin-top: 40px;
 }
+.labelError {
+    color: red;
+    display: none;
+}
