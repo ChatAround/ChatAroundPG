@@ -5,7 +5,6 @@ var NS = {
 
 var userName = $.cookie('userName');
 var password = $.cookie('password');
-var sMessage;
 
 var showUserName = function(){
     $("#userName").html(userName)
@@ -72,15 +71,21 @@ var sendLoginInfo = function(e) {
             })
         })
         .done(function(result) {
-            sMessage = result;
-            if(result == "OK") {
                 window.location.href = "html/main.html";
-            } else {
-                window.alert(sMessage)
-            }
         })
         .fail(function(error) {
             console.log(error);
+            switch (error.status) {
+                case 400:
+                    window.alert("You didn't gave us your location.. we can't let you in :(");
+                    break;
+                case 401:
+                    window.alert("Wrong password :(");
+                    break;
+                case 404:
+                    window.alert("There is no such username :(");
+                    break;
+            }
         });
 };
 

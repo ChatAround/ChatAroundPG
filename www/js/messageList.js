@@ -47,10 +47,14 @@ var massage = {
                     document.getElementById(dis).style.display = "none";
                 }
             }
-
         };
         messages.fetch()
-            .then(updateCurrentMessageList);
+            .then(updateCurrentMessageList)
+            .fail(function(error) {
+            window.location.href = "../index.html";
+            });
+
+
     }};
 
 setInterval(function () {

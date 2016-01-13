@@ -121,6 +121,17 @@ var sendRegisterInfo = function(e) {
             })
             .fail(function (error) {
                 console.log(error);
+                switch (error.status) {
+                    case 400:
+                        window.alert("You didn't gave us your location.. we can't let you in :(");
+                        break;
+                    case 500:
+                        window.alert("Server Error");
+                        break;
+                    case 226:
+                        window.alert("This username already in use");
+                        break;
+                }
             });
     }
 };

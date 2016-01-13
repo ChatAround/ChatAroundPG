@@ -1,7 +1,7 @@
 window.onload = function() {
     var SSRadius = $.cookie('sRadius');
     if (SSRadius == null){
-        document.getElementById("radius").value =1000;
+        document.getElementById("radius").value =99;
     }else{
         document.getElementById("radius").value =SSRadius;
     }
