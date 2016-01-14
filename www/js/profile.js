@@ -58,7 +58,7 @@ var userName = $.cookie('userName');
                 url: 'http://chataround.ddns.net:8080/userProfile' + '?' + $.param({username: userName,firstName: firstname, surName: lastname, gender: gender, country: country, city: city, birthday: birth, about:about})
             })
             .done(function(result) {
-                window.alert("Changes saved!")
+                window.alert("Changes saved!");
                 document.getElementById("saveProfile").style.display = 'none';
                 document.getElementById("resetFields").style.display = 'none';
             })
