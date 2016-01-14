@@ -32,15 +32,20 @@ var sendMessage = function (e) {
         duration: timeToSend
     };
 
-    $.post("http://chataround.ddns.net:8080/message", messageInfo)
-        .done(function (response) {
-            ClearFields();
-        })
-        .fail(function (error) {
-            window.alert("Message didn't send");
-            console.log(error);
-        });
 
+    var msgInput = document.getElementById("usermsg").value;
+    if (jQuery.trim(msgInput).length == 0) {
+        document.getElementById("usermsg").focus();
+    } else {
+        $.post("http://chataround.ddns.net:8080/message", messageInfo)
+            .done(function (response) {
+                ClearFields();
+            })
+            .fail(function (error) {
+                window.alert("Message didn't send");
+                console.log(error);
+            });
+    }
 };
 
 function ClearFields() {

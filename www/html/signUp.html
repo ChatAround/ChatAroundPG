@@ -13,28 +13,34 @@
             <fieldset>
                 <legend>Sign Up</legend>
                 <div>
-                    <input type="text" name="first_name" placeholder="First name *" maxlength="16"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id="lfirst_name">You must enter your first name.</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="First name *" maxlength="16" onkeypress="return isAlphabet(event)" autofocus /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="errorLabel" id="lfirst_name">You must enter your first name.</label>
+                    <label class="errorLabel" id="fnMinLetters">Must be between 4-16 characters.</label>
                 </div>
                 <div>
-                    <input type="text" name="last_name" maxlength="16" placeholder="Last name *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id="llast_name">You must enter your last name.</label>
+                    <input type="text" name="last_name" maxlength="16" placeholder="Last name *" onkeypress="return isAlphabet(event)" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="errorLabel" id="llast_name">You must enter your last name.</label>
+                    <label class="errorLabel" id="lnMinLetters">Must be between 4-16 characters.</label>
                 </div>
                 <div>
                     <input type="text" name="username" maxlength="16" placeholder="Username *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id="lusername">You must enter your username.</label>
+                    <label class="errorLabel" id="lusername">You must enter your username.</label>
+                    <label class="errorLabel" id="uMinLetters">Must be between 4-16 characters.</label>
                 </div>
                 <div>
                     <input type="password" name="password" maxlength="16" placeholder="Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id="lpassword">You must enter a password.</label>
+                    <label class="errorLabel" id="lpassword">You must enter a password.</label>
+                    <label class="errorLabel" id="pMinLetters">Must be between 4-16 characters.</label>
                 </div>
                 <div>
                     <input type="password" name="confirm_pass" maxlength="16" placeholder="Confirm Password *"/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label id="lconfirm_pass">Passwords don't match.</label>
+                    <label class="errorLabel" id="lconfirm_pass">Passwords don't match.</label>
                 </div>
                 <div>
-                    <input type="radio" name="gender" class="gender" value="male">Male
-                    <input type="radio" name="gender" value="female">Female
+                    <label>Gender *</label> &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="gender" class="gender" value="male"/>Male
+                    <input type="radio" name="gender" class="gender" value="female"/>Female
+                    <label class="errorLabel" id="lgender">Choose your gender.</label>
                 </div>
                 <div>
                     <input type="text" name="country" placeholder="Country" maxlength="16">
@@ -52,7 +58,7 @@
                     <select name="birthday_year" id="birthday_year">
                         <option value="0">Year *</option>
                     </select>
-                    <label id="lbirthday">Insert a valid date.</label>
+                    <label class="errorLabel" id="lbirthday">Insert a valid date.</label>
                 </div>
                 <br>
                 <div>
