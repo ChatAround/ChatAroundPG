@@ -32,10 +32,11 @@ var sendMessage = function (e) {
         duration: timeToSend
     };
 
-    if (document.getElementById("usermsg").value.length < 1) {
+
+    var msgInput = document.getElementById("usermsg").value;
+    if (jQuery.trim(msgInput).length == 0) {
         document.getElementById("usermsg").focus();
     } else {
-        console.log(document.getElementById("usermsg").value.length);
         $.post("http://chataround.ddns.net:8080/message", messageInfo)
             .done(function (response) {
                 ClearFields();

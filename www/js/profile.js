@@ -29,11 +29,14 @@ var userName = $.cookie('userName');
         $('#prof_user').val(UserProfile.username);
         $('#firstname').val(UserProfile.firstName);
         $('#lastname').val(UserProfile.surName);
-        $('#gender').val(UserProfile.gender);
-        $('#country').val(UserProfile.country);
+        var gender = UserProfile.gender;
+        $('#gender').val(gender);
+        var country = UserProfile.country;
+        $('#country').val(country);
         $('#city').val(UserProfile.city);
         $('#birthday').val(UserProfile.birthday);
-        $('#about').val(UserProfile.about);
+        var about = UserProfile.about;
+        $('#about').val(about);
     };
 
     UserProfile.fetch()
@@ -64,105 +67,110 @@ var userName = $.cookie('userName');
 //window.onload = function() {
     document.getElementById("editCo").onclick = function() {
         document.getElementById("coMinLetters").style.display = "none";
+        document.getElementById("emptyCountryError").style.display = 'none';
         document.getElementById("country").disabled = false;
         document.getElementById("country").style.background = 'white';
         document.getElementById("country").style.border = '1px solid #32174d';
         document.getElementById("country").focus();
     };
     document.getElementById("country").onblur = function() {
-        var newCo = document.getElementById("country").value;
-        if (newCo.length >= 4) {
-            if (newCo != document.getElementById("country").defaultValue) {
-                if (window.confirm("Save country?")) {
-                    document.getElementById("country").defaultValue = newCo;
-                    document.getElementById("country").style.border = 'none';
-                    document.getElementById("coMinLetters").style.display = 'none';
-                    document.getElementById("country").disabled = true;
-                    document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
-                    document.getElementById("saveProfile").style.display = 'block';
-                } else {
-                    document.getElementById("country").value = document.getElementById("country").defaultValue;
-                    document.getElementById("country").style.border = 'none';
-                    document.getElementById("coMinLetters").style.display = 'none';
-                    document.getElementById("country").disabled = true;
-                    document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
-                }
+        var newCountry = document.getElementById("country").value;
+        console.log(newCountry.length);
+        if (jQuery.trim(newCountry).length == 0) {
+            document.getElementById("emptyCountryError").style.display = 'block';
+        }else if (newCountry.length >= 4) {
+            document.getElementById("country").defaultValue = newCountry;
+            document.getElementById("country").style.border = 'none';
+            document.getElementById("coMinLetters").style.display = 'none';
+            document.getElementById("emptyCountryError").style.display = 'none';
+            document.getElementById("country").disabled = true;
+            document.getElementById("country").style.background = 'rgba(50, 23, 77 ,0)';
+            if (newCountry != UserProfile.country) {
+                document.getElementById("saveProfile").style.display = 'inline';
+                document.getElementById("resetFields").style.display = 'inline';
             } else {
                 document.getElementById("country").style.border = 'none';
                 document.getElementById("coMinLetters").style.display = 'none';
+                document.getElementById("emptyCountryError").style.display = 'none';
                 document.getElementById("country").disabled = true;
-                document.getElementById("country").style.background = 'rgba(50, 23, 77, 0)';
+                document.getElementById("country").style.background = 'rgba(50, 23, 77 0)';
             }
         } else {
-            document.getElementById("coMinLetters").style.display = "block";
+            document.getElementById("coMinLetters").style.display = 'block';
         }
     };
 
     document.getElementById("editCi").onclick = function() {
         document.getElementById("ciMinLetters").style.display = "none";
+        document.getElementById("emptyCityError").style.display = 'none';
         document.getElementById("city").disabled = false;
         document.getElementById("city").style.background = 'white';
         document.getElementById("city").style.border = '1px solid #32174d';
         document.getElementById("city").focus();
     };
     document.getElementById("city").onblur = function() {
-        var newCi = document.getElementById("city").value;
-        if (newCi.length >= 4) {
-            if (newCi != document.getElementById("city").defaultValue) {
-                if (window.confirm("Save city?")) {
-                    document.getElementById("city").defaultValue = newCi;
-                    document.getElementById("city").style.border = 'none';
-                    document.getElementById("ciMinLetters").style.display = 'none';
-                    document.getElementById("city").disabled = true;
-                    document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
-                    document.getElementById("saveProfile").style.display = 'block';
-                } else {
-                    document.getElementById("city").value = document.getElementById("country").defaultValue;
-                    document.getElementById("city").style.border = 'none';
-                    document.getElementById("ciMinLetters").style.display = 'none';
-                    document.getElementById("city").disabled = true;
-                    document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
-                }
+        var newCity = document.getElementById("city").value;
+        if (jQuery.trim(newCity).length == 0) {
+            document.getElementById("emptyCityError").style.display = 'block';
+        } else if (newCity.length >= 4) {
+            document.getElementById("city").defaultValue = newCity;
+            document.getElementById("city").style.border = 'none';
+            document.getElementById("ciMinLetters").style.display = 'none';
+            document.getElementById("emptyCityError").style.display = 'none';
+            document.getElementById("city").disabled = true;
+            document.getElementById("city").style.background = 'rgba(50, 23, 77 ,0)';
+            if (newCity != UserProfile.city) {
+                document.getElementById("saveProfile").style.display = 'inline';
+                document.getElementById("resetFields").style.display = 'inline';
             } else {
                 document.getElementById("city").style.border = 'none';
                 document.getElementById("ciMinLetters").style.display = 'none';
+                document.getElementById("emptyCityError").style.display = 'none';
                 document.getElementById("city").disabled = true;
-                document.getElementById("city").style.background = 'rgba(50, 23, 77, 0)';
+                document.getElementById("city").style.background = 'rgba(50, 23, 77 0)';
             }
         } else {
-            document.getElementById("ciMinLetters").style.display = "block";
+            document.getElementById("ciMinLetters").style.display = 'block';
         }
     };
 
     document.getElementById("editAbout").onclick = function() {
+        document.getElementById("emptyCountryError").style.display = 'none';
         document.getElementById('about').disabled = false;
         document.getElementById("about").style.background = 'white';
         document.getElementById('about').style.border = '1px solid #32174d';
         document.getElementById('about').focus();
     };
-    document.getElementById('about').onblur = function() {
-        var newG = document.getElementById('about').value;
-        if (newG != document.getElementById('about').defaultValue) {
-            if (window.confirm("Save informations?")) {
-                document.getElementById('about').defaultValue = newG;
-                document.getElementById('about').style.border = 'none';
-                document.getElementById('about').disabled = true;
-                document.getElementById("about").style.background = 'rgba(50, 23, 77, 0)';
-                document.getElementById("saveProfile").style.display = 'block';
-            } else {
-                document.getElementById('about').value = document.getElementById('about').defaultValue;
-                document.getElementById('about').style.border = 'none';
-                document.getElementById('about').disabled = true;
-                document.getElementById("about").style.background = 'rgba(50, 23, 77, 0)';
-            }
+    document.getElementById("about").onblur = function() {
+        var newAbout = document.getElementById("about").value;
+        if (jQuery.trim(newAbout).length == 0) {
+            document.getElementById("emptyAboutError").style.display = 'block';
         } else {
-            document.getElementById('about').style.border = 'none';
-            document.getElementById('about').disabled = true;
-            document.getElementById("about").style.background = 'rgba(50, 23, 77, 0)';
+            document.getElementById("about").defaultValue = newAbout;
+            document.getElementById("about").style.border = 'none';
+            document.getElementById("emptyAboutError").style.display = 'none';
+            document.getElementById("about").disabled = true;
+            document.getElementById("about").style.background = 'rgba(50, 23, 77 ,0)';
+            if (newAbout != UserProfile.about) {
+                document.getElementById("saveProfile").style.display = 'inline';
+                document.getElementById("resetFields").style.display = 'inline';
+            } else {
+                document.getElementById("about").style.border = 'none';
+                document.getElementById("emptyAboutError").style.display = 'none';
+                document.getElementById("about").disabled = true;
+                document.getElementById("about").style.background = 'rgba(50, 23, 77 0)';
+            }
         }
     };
 //};
 
+var resetFields = function() {
+    document.getElementById("country").value = UserProfile.country;
+    document.getElementById("city").value = UserProfile.city;
+    document.getElementById("about").value = UserProfile.about;
+};
+
 
 
 $("[name='saveProfile']").on('click', updateProfile);
+$("[name='resetFields']").on('click', resetFields);

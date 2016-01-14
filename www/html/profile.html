@@ -9,7 +9,7 @@
 <body>
 
     <dl>
-        <dt id="header"><label id="header-title"><img src="../img/img/logo.gif" width="200" height="50"> </label></dt>
+        <dt id="header"><label id="header-title"><a href="main.html"> <img src="../img/img/logo.gif" width="200" height="50"> </a></label></dt>
     </dl>
 
     <div id="dp">
@@ -49,12 +49,14 @@
                     <input type="text" id="country" value="" maxlength="16" disabled/>
                     <input type="image" class="edit" id="editCo" src="../img/edit.png" width="15" height="15">
                     <label class="labelError" id="coMinLetters">Minimum characters 4-16.</label>
+                    <label class="labelError" id="emptyCountryError">Asteio. Alla se epiasa!</label>
                 </p>
                 <p>
                     <strong>City:</strong>
                     <input type="text" id="city" value="" maxlength="16" disabled/>
                     <input type="image" class="edit" id="editCi" src="../img/edit.png" width="15" height="15">
                     <label class="labelError" id="ciMinLetters">Minimum characters 4-16.</label>
+                    <label class="labelError" id="emptyCityError">Asteio. Alla se epiasa!</label>
                 </p>
 
                 <p>
@@ -67,11 +69,13 @@
                 </p>
                 <p>
                     <strong>About:</strong>
-                    <textarea id="about" placeholder="" maxlength="2000" disabled></textarea>
+                    <textarea id="about" placeholder="" maxlength="200" disabled></textarea>
                     <input type="image" id="editAbout" class="edit" src="../img/edit.png" width="15" height="15">
+                    <label class="labelError" id="emptyAboutError">Asteio. Alla se epiasa!</label>
                 </p>
                 <p>
                     <button type="button" name="saveProfile" id="saveProfile" class="blueButton">Save</button>
+                    <button type="button" name="resetFields" id="resetFields" class="blueButton">Reset</button>
                 </p>
             </div>
             <div style="clear:both"></div>
