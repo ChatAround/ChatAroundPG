@@ -59,6 +59,8 @@ var userName = $.cookie('userName');
             })
             .done(function(result) {
                 window.alert("Changes saved!")
+                document.getElementById("saveProfile").style.display = 'none';
+                document.getElementById("resetFields").style.display = 'none';
             })
     };
 
@@ -165,9 +167,7 @@ var userName = $.cookie('userName');
 //};
 
 var resetFields = function() {
-    document.getElementById("country").value = UserProfile.country;
-    document.getElementById("city").value = UserProfile.city;
-    document.getElementById("about").value = UserProfile.about;
+    location.reload();
 };
 
 
