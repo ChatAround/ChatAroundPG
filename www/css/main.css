@@ -220,18 +220,3 @@ p.noChats,
     color:#fff;
     text-shadow:1px 1px 0 #940f0f;
 }
-#radiusError {
-    /*font-size: 8px;*/
-    display: none;
-    color: red;
-}
-#timeError {
-    /*font-size: 8px;*/
-    display: none;
-    color: red;
-}
-#closeBtn {
-    position: absolute;
-    left: 10%;
-    top: 80%;
-}

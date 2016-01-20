@@ -214,12 +214,22 @@ a:hover {
 #selectedTime {
     width: 100px;
 }
-#closeBtn {
-    margin-left: 120px;
-}
 label {
     padding-left: 10px;
 }
 .clear{
     clear:both;
+}
+#radiusError {
+     display: none;
+     color: red;
+ }
+#timeError {
+    display: none;
+    color: red;
+}
+#closeBtn {
+    position: absolute;
+    left: 40%;
+    top: 80%;
 }
