@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+  <title>Test Suite</title>
+</head>
+<body>
+<table id="suiteTable" cellpadding="1" cellspacing="1" border="1" class="selenium"><tbody>
+<tr><td><b>Test Suite</b></td></tr>
+<tr><td><a href="Create Account Test.html">Create Account Test</a></td></tr>
+<tr><td><a href="Login and send a message Test.html">Login and send a message Test</a></td></tr>
+<tr><td><a href="Try to connect to chat without log in.html">Try to connect to chat without log in</a></td></tr>
+<tr><td><a href="Test the other users profile and yours.html">Test the other users profile and your's</a></td></tr>
+<tr><td><a href="Try to set null or and string in settings popup.html">Try to set null or/and string in settings popup</a></td></tr>
+<tr><td><a href="Edit your info in your profile.html">Edit your info in your profile</a></td></tr>
+</tbody></table>
+</body>
+</html>

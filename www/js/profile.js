@@ -42,7 +42,7 @@ var userName = $.cookie('userName');
     UserProfile.fetch()
         .then(getProfile)
         .fail(function(error) {
-            window.alert("You are not Logged in !!");
+            window.alert("Server Error");
             window.location.href = "../index.html";
         });
 
